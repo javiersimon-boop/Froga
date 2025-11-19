@@ -6,26 +6,26 @@
     <title>Colegio Vicenciano Irun | Saber más para servir mejor</title>
     <meta name="description" content="Centro educativo concertado en Irun. Educación Infantil, Primaria y Secundaria. Formando personas desde la excelencia y los valores vicencianos.">
     
-    <!-- FUENTES: Montserrat (Según Manual de Identidad Pág. 26) -->
+    <!-- FUENTES: Montserrat -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
-    <!-- ESTILOS: Tailwind CSS (Para velocidad y diseño limpio) -->
+    <!-- ESTILOS: Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- CONFIGURACIÓN DE MARCA (Colores extraídos del Manual Pág. 11 y 28) -->
+    <!-- CONFIGURACIÓN DE MARCA -->
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        'vic-teal': '#006D7B',  /* Color Principal */
-                        'vic-dark-teal': '#004a53', /* Hover state */
-                        'vic-gold': '#D79B2D',  /* Acento cálido */
-                        'vic-red': '#C3272B',   /* Color Corazón */
-                        'vic-light': '#F9FAFB', /* Fondos */
-                        'vic-dark': '#333333',  /* Texto */
+                        'vic-teal': '#006D7B',
+                        'vic-dark-teal': '#004a53',
+                        'vic-gold': '#D79B2D',
+                        'vic-red': '#C3272B',
+                        'vic-light': '#F9FAFB',
+                        'vic-dark': '#333333',
                     },
                     fontFamily: {
                         sans: ['Montserrat', 'sans-serif'],
@@ -36,18 +36,15 @@
     </script>
 
     <style>
-        /* Optimizaciones y animaciones suaves */
         html { scroll-behavior: smooth; }
         
         .hero-bg {
-            /* Imagen emocional: Interacción profesor-alumno (Supera a fotos de edificios vacíos) */
             background-image: linear-gradient(rgba(0, 45, 55, 0.75), rgba(0, 45, 55, 0.6)), url('https://images.unsplash.com/photo-1544531586-fde5298cdd40?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
             background-size: cover;
             background-position: center;
-            background-attachment: fixed; /* Efecto Parallax ligero sin JS */
+            background-attachment: fixed;
         }
         
-        /* Animaciones de entrada */
         .reveal {
             opacity: 0;
             transform: translateY(30px);
@@ -58,17 +55,106 @@
             transform: translateY(0);
         }
 
-        /* Utilidades específicas */
-        .text-shadow { text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
+        /* ESTILOS PARA LA CAPA DE ESTRATEGIA */
+        .strategy-spot {
+            position: absolute;
+            width: 32px;
+            height: 32px;
+            background-color: #C3272B; /* Vic Red para destacar */
+            border: 2px solid white;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 60;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            display: none; /* Oculto por defecto */
+            animation: pulse-red 2s infinite;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: white;
+            font-size: 14px;
+        }
+
+        .strategy-spot::after {
+            content: 'i';
+        }
+
+        .strategy-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.7);
+            z-index: 100;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            backdrop-filter: blur(4px);
+        }
+
+        .strategy-content {
+            background: white;
+            padding: 30px;
+            border-radius: 16px;
+            max-width: 500px;
+            width: 100%;
+            position: relative;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            animation: slide-up 0.3s ease-out;
+            border-top: 6px solid #C3272B;
+        }
+
+        @keyframes pulse-red {
+            0% { box-shadow: 0 0 0 0 rgba(195, 39, 43, 0.7); transform: scale(1); }
+            70% { box-shadow: 0 0 0 10px rgba(195, 39, 43, 0); transform: scale(1.1); }
+            100% { box-shadow: 0 0 0 0 rgba(195, 39, 43, 0); transform: scale(1); }
+        }
+
+        @keyframes slide-up {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .show-strategy .strategy-spot {
+            display: flex;
+        }
     </style>
 </head>
-<body class="font-sans text-vic-dark antialiased selection:bg-vic-gold selection:text-white bg-vic-light">
+<body class="font-sans text-vic-dark antialiased selection:bg-vic-gold selection:text-white bg-vic-light relative">
 
-    <!-- BARRA DE NAVEGACIÓN (Sticky) -->
+    <!-- BOTÓN FLOTANTE PARA ACTIVAR ESTRATEGIA -->
+    <button onclick="toggleStrategyMode()" class="fixed bottom-6 right-6 z-[70] bg-vic-dark text-white px-4 py-3 rounded-full shadow-2xl font-bold border-2 border-vic-gold hover:scale-105 transition flex items-center gap-2 text-sm">
+        <span id="strategy-icon">👁️</span>
+        <span id="strategy-text">Ver Análisis Estratégico</span>
+    </button>
+
+    <!-- MODAL DE ESTRATEGIA -->
+    <div id="strategyModal" class="strategy-modal" onclick="closeStrategy(event)">
+        <div class="strategy-content">
+            <h3 id="modalTitle" class="text-2xl font-bold text-vic-teal mb-3">Título</h3>
+            <div class="w-12 h-1 bg-vic-gold mb-4"></div>
+            <p id="modalText" class="text-gray-600 leading-relaxed mb-6">Explicación...</p>
+            <div class="bg-gray-50 p-4 rounded-lg border border-gray-200">
+                <span class="text-xs font-bold text-gray-400 uppercase tracking-wider">Ventaja Competitiva:</span>
+                <p id="modalAdvantage" class="text-sm font-medium text-vic-dark mt-1">Ventaja...</p>
+            </div>
+            <button onclick="closeModal()" class="absolute top-4 right-4 text-gray-400 hover:text-vic-red">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+            </button>
+        </div>
+    </div>
+
+    <!-- BARRA DE NAVEGACIÓN -->
     <nav class="bg-white shadow-md fixed w-full z-50 transition-all duration-300" id="navbar">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- SPOT: NAVEGACIÓN -->
+            <div class="strategy-spot absolute top-4 right-1/2 translate-x-1/2 md:right-40 md:translate-x-0" 
+                 onclick="showStrategy('CTA Directo y Limpieza', 'A diferencia de Txingudi o Dunboa, que usan el menú como un explorador de archivos, aquí simplificamos al máximo. El botón SOLICITAR VISITA destaca sobre el resto.', 'Captación inmediata sin distracciones burocráticas.')"></div>
+
             <div class="flex justify-between h-20">
-                <!-- Logotipo Vectorial SVG (Optimizado para retina) -->
                 <div class="flex-shrink-0 flex items-center gap-3 cursor-pointer" onclick="window.scrollTo(0,0)">
                     <svg class="h-10 w-auto" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M30 40 Q35 10 50 25 Q65 10 70 40" stroke="#006D7B" stroke-width="3" fill="none"/>
@@ -82,20 +168,15 @@
                         <span class="text-xs font-semibold text-gray-400 tracking-widest uppercase">Irun • Hijas de la Caridad</span>
                     </div>
                 </div>
-
-                <!-- Menú Desktop -->
                 <div class="hidden md:flex items-center space-x-8">
                     <a href="#etapas" class="text-gray-600 hover:text-vic-teal font-medium transition text-sm uppercase tracking-wide">Etapas</a>
                     <a href="#proyecto" class="text-gray-600 hover:text-vic-teal font-medium transition text-sm uppercase tracking-wide">Proyecto</a>
                     <a href="#servicios" class="text-gray-600 hover:text-vic-teal font-medium transition text-sm uppercase tracking-wide">Servicios</a>
                     <a href="#actualidad" class="text-gray-600 hover:text-vic-teal font-medium transition text-sm uppercase tracking-wide">Noticias</a>
-                    <!-- CTA Principal: Diferenciador clave contra los públicos -->
                     <a href="#contacto" class="bg-vic-teal text-white px-6 py-2 rounded-full font-bold hover:bg-vic-dark-teal transition shadow-md transform hover:-translate-y-0.5 duration-200">
                         Solicitar Visita
                     </a>
                 </div>
-
-                <!-- Botón Menú Móvil -->
                 <div class="flex items-center md:hidden">
                     <button onclick="toggleMenu()" class="text-vic-teal p-2 focus:outline-none">
                         <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -105,8 +186,6 @@
                 </div>
             </div>
         </div>
-
-        <!-- Menú Móvil Desplegable -->
         <div id="mobile-menu" class="hidden md:hidden bg-white border-t absolute w-full shadow-xl">
             <div class="px-4 pt-2 pb-6 space-y-2">
                 <a href="#etapas" class="block px-3 py-3 text-base font-medium text-gray-700 border-b border-gray-100" onclick="toggleMenu()">Etapas Educativas</a>
@@ -117,10 +196,14 @@
         </div>
     </nav>
 
-    <!-- HERO SECTION: Propuesta de Valor Emocional -->
-    <!-- CORRECCIÓN: Añadido z-index a los contenidos internos para evitar que la curva SVG los tape -->
-    <header class="hero-bg min-h-screen flex items-center justify-center text-center px-4 relative">
-        <div class="max-w-4xl mx-auto pt-20 pb-32 relative z-10"> <!-- Añadido 'relative z-10' para elevar el texto/botones sobre la curva -->
+    <!-- HERO SECTION -->
+    <header class="hero-bg min-h-screen flex items-center justify-center text-center px-4 relative pb-32 md:pb-48">
+        <!-- SPOT: COPYWRITING EMOCIONAL -->
+        <div class="strategy-spot absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2" 
+             style="margin-top: -80px;"
+             onclick="showStrategy('Narrativa Aspiracional', 'La competencia pública (Plaiaundi, Dunboa) usa fotos de edificios y textos administrativos. Aquí usamos \'Educamos para la vida\' y fotos de interacción humana.', 'Conexión emocional inmediata con los padres.')"></div>
+
+        <div class="max-w-4xl mx-auto pt-20 relative z-10">
             <span class="inline-block py-1 px-3 rounded-full bg-vic-gold/20 text-vic-gold border border-vic-gold/40 text-xs font-bold uppercase tracking-widest mb-4 reveal active">
                 Matriculación Abierta 2025/26
             </span>
@@ -141,19 +224,20 @@
                 </a>
             </div>
         </div>
-        
-        <!-- Curva decorativa (z-index por defecto, quedará debajo del contenido gracias al z-10 anterior) -->
-        <div class="absolute bottom-0 left-0 w-full overflow-hidden leading-none">
+        <div class="absolute bottom-0 left-0 w-full overflow-hidden leading-none z-0">
             <svg class="relative block w-full h-12 md:h-24" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
                 <path d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z" class="fill-vic-light"></path>
             </svg>
         </div>
     </header>
 
-    <!-- ACCESO RÁPIDO (Estrategia para padres actuales) -->
+    <!-- ACCESO RÁPIDO -->
     <div class="relative z-20 -mt-8 md:-mt-16 mb-20 px-4">
+        <!-- SPOT: USABILIDAD -->
+        <div class="strategy-spot absolute -top-6 left-1/2 -translate-x-1/2" 
+             onclick="showStrategy('Segmentación de Audiencia', 'Aquí aplicamos la lección de Bidasoa/Plaiaundi pero mejorada. Damos servicio a los padres actuales (Alexia, Pagos) sin que estos enlaces ensucien el menú principal de venta.', 'Mantiene la web limpia para captación y útil para familias.')"></div>
+
         <div class="max-w-6xl mx-auto bg-white rounded-2xl shadow-xl p-4 md:p-8 grid grid-cols-2 md:grid-cols-4 gap-4 md:divide-x divide-gray-100">
-            <!-- Item 1 -->
             <a href="#" class="flex flex-col items-center justify-center p-4 hover:bg-gray-50 rounded-xl transition group text-center">
                 <div class="bg-vic-light p-3 rounded-full mb-3 group-hover:bg-vic-teal group-hover:text-white text-vic-teal transition duration-300">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
@@ -161,7 +245,6 @@
                 <span class="font-bold text-gray-800">Plataforma Alexia</span>
                 <span class="text-xs text-gray-500">Gestión académica</span>
             </a>
-            <!-- Item 2 -->
             <a href="#" class="flex flex-col items-center justify-center p-4 hover:bg-gray-50 rounded-xl transition group text-center">
                 <div class="bg-vic-light p-3 rounded-full mb-3 group-hover:bg-vic-teal group-hover:text-white text-vic-teal transition duration-300">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/></svg>
@@ -169,7 +252,6 @@
                 <span class="font-bold text-gray-800">Pagos / Tienda</span>
                 <span class="text-xs text-gray-500">Gestión recibos</span>
             </a>
-            <!-- Item 3 -->
             <a href="#" class="flex flex-col items-center justify-center p-4 hover:bg-gray-50 rounded-xl transition group text-center">
                 <div class="bg-vic-light p-3 rounded-full mb-3 group-hover:bg-vic-teal group-hover:text-white text-vic-teal transition duration-300">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
@@ -177,7 +259,6 @@
                 <span class="font-bold text-gray-800">Menú Comedor</span>
                 <span class="text-xs text-gray-500">Consulta mensual</span>
             </a>
-            <!-- Item 4 -->
             <a href="#" class="flex flex-col items-center justify-center p-4 hover:bg-gray-50 rounded-xl transition group text-center">
                 <div class="bg-vic-light p-3 rounded-full mb-3 group-hover:bg-vic-teal group-hover:text-white text-vic-teal transition duration-300">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
@@ -188,8 +269,12 @@
         </div>
     </div>
 
-    <!-- ETAPAS EDUCATIVAS (Diseño limpio) -->
-    <section id="etapas" class="py-16 px-4 bg-vic-light">
+    <!-- ETAPAS EDUCATIVAS -->
+    <section id="etapas" class="py-16 px-4 bg-vic-light relative">
+        <!-- SPOT: ARQUITECTURA -->
+        <div class="strategy-spot absolute top-20 left-1/2 -translate-x-1/2" 
+             onclick="showStrategy('Claridad vs Caos', 'Centros como Toki Alai usan menús densos para sus edificios. Nosotros usamos tarjetas visuales limpias para las etapas, como La Salle, facilitando que el padre encuentre rápido lo que busca según la edad de su hijo.', 'Reducción de la carga cognitiva.')"></div>
+
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-16 reveal">
                 <h2 class="text-vic-teal font-bold text-3xl md:text-4xl mb-4 uppercase tracking-wide">Oferta Educativa</h2>
@@ -213,7 +298,6 @@
                         </a>
                     </div>
                 </article>
-
                 <!-- Primaria -->
                 <article class="group bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 reveal" style="transition-delay: 0.1s;">
                     <div class="relative h-64 overflow-hidden">
@@ -229,7 +313,6 @@
                         </a>
                     </div>
                 </article>
-
                 <!-- Secundaria -->
                 <article class="group bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 reveal" style="transition-delay: 0.2s;">
                     <div class="relative h-64 overflow-hidden">
@@ -249,10 +332,13 @@
         </div>
     </section>
 
-    <!-- VALORES (Diferenciación Vicenciana) -->
+    <!-- VALORES -->
     <section id="proyecto" class="py-20 bg-white relative overflow-hidden">
-        <!-- Elemento decorativo de fondo -->
         <div class="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 bg-vic-gold/10 rounded-full blur-3xl"></div>
+
+        <!-- SPOT: MARCA -->
+        <div class="strategy-spot absolute top-24 left-10" 
+             onclick="showStrategy('Propuesta de Valor Única', 'Competimos con la \'innovación\' de Bidasoa (drones) y el \'elitismo\' de Erain usando la \'Pedagogía del Corazón\'. Es un nicho emocional que nadie más está ocupando en Irun.', 'Posicionamiento Humanista-Premium.')"></div>
 
         <div class="max-w-7xl mx-auto px-4 relative z-10">
             <div class="grid md:grid-cols-2 gap-16 items-center">
@@ -296,7 +382,7 @@
         </div>
     </section>
 
-    <!-- ESTADÍSTICAS (Autoridad) -->
+    <!-- ESTADÍSTICAS -->
     <section class="bg-vic-teal py-16 text-white">
         <div class="max-w-7xl mx-auto px-4">
             <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
@@ -320,18 +406,19 @@
         </div>
     </section>
 
-    <!-- TESTIMONIOS (Prueba Social) -->
-    <section class="py-20 bg-vic-light">
+    <!-- TESTIMONIOS -->
+    <section class="py-20 bg-vic-light relative">
+        <!-- SPOT: PRUEBA SOCIAL -->
+        <div class="strategy-spot absolute top-24 right-10" 
+             onclick="showStrategy('Prueba Social', 'El punto débil de los colegios públicos es la percepción de \'frialdad\'. Con estos testimonios atacamos ese flanco, mostrando calidez y satisfacción real de otras familias.', 'Generación de confianza.')"></div>
+
         <div class="max-w-7xl mx-auto px-4">
             <div class="text-center mb-12 reveal">
                 <h2 class="text-vic-teal font-bold text-3xl md:text-4xl mb-4">Lo que dicen las familias</h2>
             </div>
             <div class="grid md:grid-cols-3 gap-6">
-                <!-- Testimonio 1 -->
                 <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100 reveal">
-                    <div class="flex text-vic-gold mb-4">
-                        ★★★★★
-                    </div>
+                    <div class="flex text-vic-gold mb-4">★★★★★</div>
                     <p class="text-gray-600 mb-6 italic">"Lo mejor del colegio no son solo las instalaciones, sino el trato humano. Mis hijos van felices cada mañana, y eso para mí no tiene precio."</p>
                     <div class="flex items-center gap-4">
                         <div class="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center font-bold text-gray-500">M</div>
@@ -341,11 +428,8 @@
                         </div>
                     </div>
                 </div>
-                <!-- Testimonio 2 -->
                 <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100 reveal" style="transition-delay: 0.1s;">
-                    <div class="flex text-vic-gold mb-4">
-                        ★★★★★
-                    </div>
+                    <div class="flex text-vic-gold mb-4">★★★★★</div>
                     <p class="text-gray-600 mb-6 italic">"El nivel académico es excelente, pero lo que más valoro es cómo les enseñan a ser buenas personas. Los valores vicencianos se notan."</p>
                     <div class="flex items-center gap-4">
                         <div class="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center font-bold text-gray-500">J</div>
@@ -355,11 +439,8 @@
                         </div>
                     </div>
                 </div>
-                <!-- Testimonio 3 -->
                 <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100 reveal" style="transition-delay: 0.2s;">
-                    <div class="flex text-vic-gold mb-4">
-                        ★★★★★
-                    </div>
+                    <div class="flex text-vic-gold mb-4">★★★★★</div>
                     <p class="text-gray-600 mb-6 italic">"La atención a la diversidad es real. Han sabido sacar lo mejor de mi hija adaptándose a su ritmo. Muy agradecidos al profesorado."</p>
                     <div class="flex items-center gap-4">
                         <div class="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center font-bold text-gray-500">L</div>
@@ -374,7 +455,11 @@
     </section>
 
     <!-- CTA FINAL / CONTACTO -->
-    <section id="contacto" class="py-20 bg-white">
+    <section id="contacto" class="py-20 bg-white relative">
+         <!-- SPOT: CAPTACIÓN -->
+         <div class="strategy-spot absolute bottom-20 left-10" 
+              onclick="showStrategy('Captación de Leads', 'Solo Erain hace esto bien. En lugar de esperar a que llamen, ofrecemos un formulario directo. Esto nos permite contactar proactivamente a los padres interesados.', 'Aumento del ratio de conversión.')"></div>
+
         <div class="max-w-5xl mx-auto px-4">
             <div class="bg-vic-dark rounded-3xl overflow-hidden shadow-2xl flex flex-col md:flex-row reveal">
                 <div class="p-10 md:p-16 md:w-1/2 text-white flex flex-col justify-center">
@@ -429,7 +514,11 @@
     </section>
 
     <!-- FOOTER -->
-    <footer class="bg-vic-dark text-white pt-12 pb-6">
+    <footer class="bg-vic-dark text-white pt-12 pb-6 relative">
+        <!-- SPOT: TECNOLOGÍA -->
+        <div class="strategy-spot absolute top-10 right-10" 
+             onclick="showStrategy('Stack Tecnológico', 'A diferencia de Elatzeta (Wix) o los públicos (Liferay), esta web usa HTML + Tailwind. Esto garantiza una velocidad de carga casi instantánea y un \'Code Bloat\' de cero.', 'Superioridad técnica y SEO.')"></div>
+
         <div class="max-w-7xl mx-auto px-4">
             <div class="grid md:grid-cols-4 gap-8 mb-8">
                 <div class="col-span-1 md:col-span-2">
@@ -467,15 +556,53 @@
         </div>
     </footer>
 
-    <!-- SCRIPTS DE FUNCIONALIDAD -->
+    <!-- SCRIPTS -->
     <script>
-        // 1. Menú Móvil
+        // LÓGICA DEL MODO ESTRATEGIA
+        let strategyMode = false;
+        
+        function toggleStrategyMode() {
+            strategyMode = !strategyMode;
+            const body = document.body;
+            const btnText = document.getElementById('strategy-text');
+            const btnIcon = document.getElementById('strategy-icon');
+
+            if (strategyMode) {
+                body.classList.add('show-strategy');
+                btnText.textContent = 'Ocultar Análisis';
+                btnIcon.textContent = '❌';
+            } else {
+                body.classList.remove('show-strategy');
+                btnText.textContent = 'Ver Análisis Estratégico';
+                btnIcon.textContent = '👁️';
+                closeModal();
+            }
+        }
+
+        function showStrategy(title, text, advantage) {
+            const modal = document.getElementById('strategyModal');
+            document.getElementById('modalTitle').textContent = title;
+            document.getElementById('modalText').textContent = text;
+            document.getElementById('modalAdvantage').textContent = advantage;
+            modal.style.display = 'flex';
+        }
+
+        function closeStrategy(e) {
+            if (e.target.id === 'strategyModal') {
+                closeModal();
+            }
+        }
+
+        function closeModal() {
+            document.getElementById('strategyModal').style.display = 'none';
+        }
+
+        // Funcionalidad base
         function toggleMenu() {
             const menu = document.getElementById('mobile-menu');
             menu.classList.toggle('hidden');
         }
 
-        // 2. Scroll Reveal Animation
         function reveal() {
             var reveals = document.querySelectorAll(".reveal");
             for (var i = 0; i < reveals.length; i++) {
@@ -488,20 +615,14 @@
             }
         }
         window.addEventListener("scroll", reveal);
-        // Trigger on load
         reveal();
 
-        // 3. Navbar Background on Scroll
         window.addEventListener('scroll', function() {
             const navbar = document.getElementById('navbar');
             if (window.scrollY > 50) {
-                navbar.classList.add('shadow-lg');
-                navbar.classList.add('bg-white/95');
-                navbar.classList.add('backdrop-blur-md');
+                navbar.classList.add('shadow-lg', 'bg-white/95', 'backdrop-blur-md');
             } else {
-                navbar.classList.remove('shadow-lg');
-                navbar.classList.remove('bg-white/95');
-                navbar.classList.remove('backdrop-blur-md');
+                navbar.classList.remove('shadow-lg', 'bg-white/95', 'backdrop-blur-md');
             }
         });
     </script>
