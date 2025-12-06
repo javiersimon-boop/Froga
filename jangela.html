@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jangela | Comedor</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: { 'sv-primary': '#006D7B', 'sv-accent-1': '#5FB3C5', 'sv-accent-2': '#95C11F', 'sv-accent-3': '#FDC300', 'sv-cta': '#F3953F', 'sv-light': '#F9FAFB' },
+                    fontFamily: { sans: ['Montserrat', 'sans-serif'] }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-white text-gray-800 font-sans">
+
+    <nav class="bg-white shadow-md fixed w-full z-50">
+        <div class="max-w-7xl mx-auto px-4 h-20 flex items-center justify-between">
+            <a href="index.html" class="font-bold text-sv-primary text-lg uppercase">San Vicente de Paúl</a>
+            <div class="hidden md:flex space-x-6 text-xs uppercase font-bold text-gray-500">
+                <a href="index.html" class="hover:text-sv-primary">Hasiera / Inicio</a>
+                <a href="#" class="text-sv-primary">Jangela / Comedor</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="relative bg-sv-primary h-64 flex items-center justify-center pt-20 overflow-hidden">
+        <div class="absolute inset-0 opacity-20"><img src="https://images.unsplash.com/photo-1577308856961-0e97146fa5f6?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" class="w-full h-full object-cover"></div>
+        <div class="relative z-10 text-center px-4">
+            <h1 class="text-4xl md:text-5xl font-bold text-white mb-2">Jangela</h1>
+            <div class="w-16 h-1 bg-sv-accent-3 mx-auto my-3"></div>
+            <p class="text-white text-xl font-medium tracking-wide opacity-90">Comedor Escolar</p>
+        </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto px-4 py-16 space-y-12">
+        
+        <div class="text-center max-w-3xl mx-auto">
+            <p class="text-lg text-gray-600 leading-relaxed">
+                Jantoki zerbitzua <strong>Auzo Lagun</strong> enpresak kudeatzen du. Menu osasungarriak eta orekatuak eskaintzen ditugu, sasoiko produktuak lehenetsiz.
+            </p>
+            <p class="text-lg text-gray-600 leading-relaxed mt-4">
+                El servicio de comedor está gestionado por <strong>Auzo Lagun</strong>. Ofrecemos menús saludables y equilibrados, priorizando productos de temporada.
+            </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8 items-start">
+            <!-- Menú del mes -->
+            <div class="bg-sv-light p-8 rounded-2xl text-center border-2 border-dashed border-sv-accent-1">
+                <svg class="w-12 h-12 text-sv-primary mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"/></svg>
+                <h3 class="text-xl font-bold text-gray-900 mb-2">Hileroko Menua</h3>
+                <p class="text-sm text-gray-500 mb-6">Menú del mes</p>
+                <a href="#" class="inline-block bg-sv-primary text-white font-bold py-3 px-8 rounded-lg shadow hover:bg-opacity-90 transition">Deskargatu PDF / Descargar PDF</a>
+            </div>
+
+            <!-- Turnos -->
+            <div class="bg-white p-8 rounded-2xl shadow-lg border border-gray-100">
+                <h3 class="text-xl font-bold text-sv-primary mb-6">Txandak / Turnos</h3>
+                <ul class="space-y-4">
+                    <li class="flex justify-between items-center border-b border-gray-100 pb-2">
+                        <span class="font-bold text-gray-700">Haur Hezkuntza 2 urte</span>
+                        <span class="text-sv-primary font-medium">12:00</span>
+                    </li>
+                    <li class="flex justify-between items-center border-b border-gray-100 pb-2">
+                        <span class="font-bold text-gray-700">Haur Hezkuntza 3-6</span>
+                        <span class="text-sv-primary font-medium">12:30</span>
+                    </li>
+                    <li class="flex justify-between items-center border-b border-gray-100 pb-2">
+                        <span class="font-bold text-gray-700">Lehen Hezkuntza</span>
+                        <span class="text-sv-primary font-medium">13:00</span>
+                    </li>
+                    <li class="flex justify-between items-center">
+                        <span class="font-bold text-gray-700">DBH / Secundaria</span>
+                        <span class="text-sv-primary font-medium">14:00</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="bg-white border-t border-gray-100 py-8 text-center text-xs text-gray-500">
+        &copy; 2025 Colegio San Vicente de Paúl Irun.
+    </footer>
+
+</body>
+</html>
