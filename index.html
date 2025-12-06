@@ -13,10 +13,9 @@
     <!-- ESTILOS PROPIOS -->
     <link rel="stylesheet" href="styles.css">
 
-    <!-- TAILWIND CSS (Librería de diseño) -->
+    <!-- TAILWIND CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
-        // Configuración de colores corporativos
         tailwind.config = {
             theme: {
                 extend: {
@@ -141,7 +140,7 @@
 
         </div>
 
-        <!-- 4. SECCIÓN ACCESOS RÁPIDOS -->
+        <!-- 4. SECCIÓN ACCESOS RÁPIDOS (Horizontal) -->
         <div class="mt-20">
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                 <!-- Horarios -->
@@ -183,22 +182,109 @@
             </div>
         </div>
 
-        <!-- 5. PIE DE ENLACES -->
+        <!-- 5. PIE DE ENLACES (Nueva Sección Actualizada) -->
         <div class="mt-16 pt-10 border-t border-gray-100">
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                <a href="#" class="flex items-center gap-4 p-4 border border-gray-100 rounded-lg hover:border-sv-accent-1 hover:bg-gray-50 transition group">
-                    <div class="p-2 bg-sv-light rounded text-sv-primary group-hover:text-white group-hover:bg-sv-primary transition"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg></div>
-                    <div><span class="block font-bold text-sv-primary text-sm">Nor gara</span><span class="text-xs text-gray-500">Quiénes somos</span></div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                
+                <!-- 1. Nor Gara -->
+                <a href="#" class="flex items-center gap-4 p-5 bg-white border border-gray-100 rounded-xl hover:shadow-md hover:border-sv-accent-1 transition-all group">
+                    <div class="flex-shrink-0 w-12 h-12 bg-sv-light rounded-full flex items-center justify-center text-sv-primary group-hover:bg-sv-primary group-hover:text-white transition-colors border border-gray-50">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+                    </div>
+                    <div>
+                        <span class="block font-bold text-sv-primary text-lg">Nor gara</span>
+                        <span class="text-sm text-gray-500">Quiénes somos</span>
+                    </div>
                 </a>
-                <a href="#" class="flex items-center gap-4 p-4 border border-gray-100 rounded-lg hover:border-sv-accent-1 hover:bg-gray-50 transition group">
-                    <div class="p-2 bg-sv-light rounded text-sv-primary group-hover:text-white group-hover:bg-sv-primary transition"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg></div>
-                    <div><span class="block font-bold text-sv-primary text-sm">Hezkuntza Eskaintza</span><span class="text-xs text-gray-500">Oferta educativa</span></div>
+
+                <!-- 2. Hezkuntza Eskaintza -->
+                <a href="#" class="flex items-center gap-4 p-5 bg-white border border-gray-100 rounded-xl hover:shadow-md hover:border-sv-accent-1 transition-all group">
+                    <div class="flex-shrink-0 w-12 h-12 bg-sv-light rounded-full flex items-center justify-center text-sv-primary group-hover:bg-sv-primary group-hover:text-white transition-colors border border-gray-50">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+                    </div>
+                    <div>
+                        <span class="block font-bold text-sv-primary text-lg">Hezkuntza Eskaintza</span>
+                        <span class="text-sm text-gray-500">Oferta educativa</span>
+                    </div>
                 </a>
-                <a href="#" class="flex items-center gap-4 p-4 border border-gray-100 rounded-lg hover:border-sv-accent-1 hover:bg-gray-50 transition group">
-                    <div class="p-2 bg-sv-light rounded text-sv-primary group-hover:text-white group-hover:bg-sv-primary transition"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg></div>
-                    <div><span class="block font-bold text-sv-primary text-sm">Zerbitzuak</span><span class="text-xs text-gray-500">Servicios</span></div>
+
+                <!-- 3. Zerbitzuak -->
+                <a href="#" class="flex items-center gap-4 p-5 bg-white border border-gray-100 rounded-xl hover:shadow-md hover:border-sv-accent-1 transition-all group">
+                    <div class="flex-shrink-0 w-12 h-12 bg-sv-light rounded-full flex items-center justify-center text-sv-primary group-hover:bg-sv-primary group-hover:text-white transition-colors border border-gray-50">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                    </div>
+                    <div>
+                        <span class="block font-bold text-sv-primary text-lg">Zerbitzuak</span>
+                        <span class="text-sm text-gray-500">Servicios</span>
+                    </div>
                 </a>
-                <!-- Más enlaces -->
+
+                <!-- 4. Instalazioak -->
+                <a href="#" class="flex items-center gap-4 p-5 bg-white border border-gray-100 rounded-xl hover:shadow-md hover:border-sv-accent-1 transition-all group">
+                    <div class="flex-shrink-0 w-12 h-12 bg-sv-light rounded-full flex items-center justify-center text-sv-primary group-hover:bg-sv-primary group-hover:text-white transition-colors border border-gray-50">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+                    </div>
+                    <div>
+                        <span class="block font-bold text-sv-primary text-lg">Instalazioak</span>
+                        <span class="text-sm text-gray-500">Instalaciones</span>
+                    </div>
+                </a>
+
+                <!-- 5. Pastoraltza -->
+                <a href="#" class="flex items-center gap-4 p-5 bg-white border border-gray-100 rounded-xl hover:shadow-md hover:border-sv-accent-1 transition-all group">
+                    <div class="flex-shrink-0 w-12 h-12 bg-sv-light rounded-full flex items-center justify-center text-sv-primary group-hover:bg-sv-primary group-hover:text-white transition-colors border border-gray-50">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+                    </div>
+                    <div>
+                        <span class="block font-bold text-sv-primary text-lg">Pastoraltza</span>
+                        <span class="text-sm text-gray-500">Pastoral</span>
+                    </div>
+                </a>
+
+                <!-- 6. Eskola Kontseilua -->
+                <a href="#" class="flex items-center gap-4 p-5 bg-white border border-gray-100 rounded-xl hover:shadow-md hover:border-sv-accent-1 transition-all group">
+                    <div class="flex-shrink-0 w-12 h-12 bg-sv-light rounded-full flex items-center justify-center text-sv-primary group-hover:bg-sv-primary group-hover:text-white transition-colors border border-gray-50">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+                    </div>
+                    <div>
+                        <span class="block font-bold text-sv-primary text-lg">Eskola Kontseilua</span>
+                        <span class="text-sm text-gray-500">Consejo Escolar</span>
+                    </div>
+                </a>
+
+                <!-- 7. Lan egin gurekin -->
+                <a href="#" class="flex items-center gap-4 p-5 bg-white border border-gray-100 rounded-xl hover:shadow-md hover:border-sv-accent-1 transition-all group">
+                    <div class="flex-shrink-0 w-12 h-12 bg-sv-light rounded-full flex items-center justify-center text-sv-primary group-hover:bg-sv-primary group-hover:text-white transition-colors border border-gray-50">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                    </div>
+                    <div>
+                        <span class="block font-bold text-sv-primary text-lg">Lan egin gurekin</span>
+                        <span class="text-sm text-gray-500">Trabaja con nosotros/-as</span>
+                    </div>
+                </a>
+
+                <!-- 8. Ikas Komunitateak -->
+                <a href="#" class="flex items-center gap-4 p-5 bg-white border border-gray-100 rounded-xl hover:shadow-md hover:border-sv-accent-1 transition-all group">
+                    <div class="flex-shrink-0 w-12 h-12 bg-sv-light rounded-full flex items-center justify-center text-sv-primary group-hover:bg-sv-primary group-hover:text-white transition-colors border border-gray-50">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+                    </div>
+                    <div>
+                        <span class="block font-bold text-sv-primary text-lg">Ikas Komunitateak</span>
+                        <span class="text-sm text-gray-500">Comunidades Aprendizaje</span>
+                    </div>
+                </a>
+
+                <!-- 9. Ikastetxeko Planak -->
+                <a href="#" class="flex items-center gap-4 p-5 bg-white border border-gray-100 rounded-xl hover:shadow-md hover:border-sv-accent-1 transition-all group">
+                    <div class="flex-shrink-0 w-12 h-12 bg-sv-light rounded-full flex items-center justify-center text-sv-primary group-hover:bg-sv-primary group-hover:text-white transition-colors border border-gray-50">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"/></svg>
+                    </div>
+                    <div>
+                        <span class="block font-bold text-sv-primary text-lg">Ikastetxeko Planak</span>
+                        <span class="text-sm text-gray-500">Planes de centro</span>
+                    </div>
+                </a>
+
             </div>
         </div>
 
@@ -210,6 +296,7 @@
             <a href="#" class="w-10 h-10 bg-sv-primary rounded-full flex items-center justify-center text-white hover:bg-sv-accent-1 transition"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
             <a href="#" class="w-10 h-10 bg-sv-primary rounded-full flex items-center justify-center text-white hover:bg-sv-accent-1 transition"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
             <a href="#" class="w-10 h-10 bg-sv-primary rounded-full flex items-center justify-center text-white hover:bg-sv-accent-1 transition"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+            <a href="#" class="w-10 h-10 bg-sv-primary rounded-full flex items-center justify-center text-white hover:bg-sv-accent-1 transition"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M21.582,6.186c-0.23-0.86-0.908-1.538-1.768-1.768C18.254,4,12,4,12,4S5.746,4,4.186,4.418 c-0.86,0.23-1.538,0.908-1.768,1.768C2,7.746,2,12,2,12s0,4.254,0.418,5.814c0.23,0.86,0.908,1.538,1.768,1.768 C5.746,20,12,20,12,20s6.254,0,7.814-0.418c0.861-0.23,1.538-0.908,1.768-1.768C22,16.254,22,12,22,12S22,7.746,21.582,6.186z M10,15.464V8.536L16,12L10,15.464z"/></svg></a>
         </div>
     </footer>
 
