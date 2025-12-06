@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aurre-matrikula 2026 | Prematrícula 2026</title>
+    
+    <!-- FUENTES -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- ESTILOS PROPIOS -->
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- TAILWIND CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'sv-primary': '#006D7B',
+                        'sv-accent-1': '#5FB3C5',
+                        'sv-accent-2': '#95C11F',
+                        'sv-accent-3': '#FDC300',
+                        'sv-cta': '#F3953F',
+                        'sv-light': '#F9FAFB',
+                    },
+                    fontFamily: {
+                        sans: ['Montserrat', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-white text-gray-800 font-sans">
+
+    <!-- BARRA DE NAVEGACIÓN -->
+    <nav class="bg-white shadow-md fixed w-full z-50 transition-all duration-300">
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20">
+                <a href="index.html" class="flex-shrink-0 flex items-center gap-3 cursor-pointer">
+                    <svg class="h-10 w-auto" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M30 40 Q35 10 50 25 Q65 10 70 40" stroke="#006D7B" stroke-width="3" fill="none"/>
+                        <path d="M35 35 Q40 15 50 30 Q60 15 65 35" stroke="#006D7B" stroke-width="2" fill="none"/>
+                        <path d="M50 90 C20 70 10 50 10 35 A 20 20 0 0 1 50 35 A 20 20 0 0 1 90 35 C90 50 80 70 50 90 Z" stroke="#006D7B" stroke-width="3" fill="none"/>
+                        <line x1="50" y1="25" x2="50" y2="75" stroke="#006D7B" stroke-width="3"/>
+                        <line x1="30" y1="45" x2="70" y2="45" stroke="#006D7B" stroke-width="3"/>
+                    </svg>
+                    <div class="flex flex-col leading-none">
+                        <span class="font-bold text-lg text-sv-primary uppercase tracking-wide">San Vicente de Paúl</span>
+                        <span class="text-xs font-semibold text-gray-400 tracking-widest uppercase">Irun</span>
+                    </div>
+                </a>
+                <div class="hidden md:flex items-center space-x-6">
+                    <a href="index.html" class="text-gray-600 hover:text-sv-primary font-medium transition text-xs uppercase tracking-wide text-center">
+                        <span class="block font-bold">Hasiera</span><span class="block font-normal text-gray-400">Inicio</span>
+                    </a>
+                    <a href="oferta-educativa.html" class="text-gray-600 hover:text-sv-primary font-medium transition text-xs uppercase tracking-wide text-center">
+                        <span class="block font-bold">Etapak</span><span class="block font-normal text-gray-400">Etapas</span>
+                    </a>
+                    <a href="#" class="text-sv-primary font-bold transition text-xs uppercase tracking-wide text-center">
+                        <span class="block font-bold">Matrikulazioa</span><span class="block font-normal text-sv-primary/70">Matrícula</span>
+                    </a>
+                    <a href="contacto.html" class="bg-sv-primary text-white px-6 py-2 rounded-full hover:bg-opacity-90 transition shadow-md text-center text-xs">
+                        <span class="block font-bold uppercase">Bisita Eskatu</span><span class="block font-normal opacity-80">Solicitar Visita</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <header class="relative bg-sv-primary h-72 flex items-center justify-center overflow-hidden pt-20">
+        <div class="absolute inset-0 opacity-20">
+            <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="Fondo Matrícula" class="w-full h-full object-cover">
+        </div>
+        <div class="relative z-10 text-center px-4">
+            <h1 class="text-4xl md:text-5xl font-bold text-white mb-2">Aurre-matrikula 2026-27</h1>
+            <div class="w-16 h-1 bg-sv-accent-2 mx-auto my-3"></div>
+            <p class="text-white text-xl font-medium tracking-wide opacity-90">Prematrícula 2026-27</p>
+        </div>
+    </header>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-16">
+
+        <!-- INTRODUCCIÓN -->
+        <div class="text-center max-w-4xl mx-auto">
+            <h2 class="text-2xl font-bold text-sv-primary mb-6">Zure familiaren hezkuntza proiektua <br><span class="text-gray-600 font-normal">El proyecto educativo de tu familia</span></h2>
+            <p class="text-gray-600 mb-4 leading-relaxed">
+                Epea zabalik dago gure ikastetxean izena emateko. Jarraian prozesuaren pausoak eta datak aurkituko dituzu.
+            </p>
+            <p class="text-gray-600 leading-relaxed">
+                El plazo de inscripción está abierto. A continuación encontrarás los pasos y fechas clave del proceso de matriculación.
+            </p>
+        </div>
+
+        <!-- FECHAS CLAVE (Timeline) -->
+        <div class="grid md:grid-cols-3 gap-8">
+            <!-- Paso 1 -->
+            <div class="bg-white p-8 rounded-xl shadow-lg border-t-4 border-sv-accent-1 hover:-translate-y-1 transition duration-300">
+                <div class="text-sv-accent-1 font-bold text-5xl mb-4 opacity-20">01</div>
+                <h3 class="text-xl font-bold text-sv-primary mb-2">Otsaila 1-15</h3>
+                <p class="text-sm font-semibold text-gray-500 mb-4 uppercase">Febrero 1-15</p>
+                <p class="text-gray-600 text-sm">
+                    <strong class="block text-gray-800 mb-1">Aurre-matrikula epea</strong>
+                    Eusko Jaurlaritzaren aplikazioaren bidez edo ikastetxean bertan.
+                </p>
+                <div class="h-px bg-gray-100 my-3"></div>
+                <p class="text-gray-500 text-sm">
+                    <strong class="block text-gray-700 mb-1">Plazo de prematrícula</strong>
+                    A través de la aplicación del Gobierno Vasco o presencialmente.
+                </p>
+            </div>
+
+            <!-- Paso 2 -->
+            <div class="bg-white p-8 rounded-xl shadow-lg border-t-4 border-sv-accent-2 hover:-translate-y-1 transition duration-300">
+                <div class="text-sv-accent-2 font-bold text-5xl mb-4 opacity-20">02</div>
+                <h3 class="text-xl font-bold text-sv-primary mb-2">Martxoa 12</h3>
+                <p class="text-sm font-semibold text-gray-500 mb-4 uppercase">Marzo 12</p>
+                <p class="text-gray-600 text-sm">
+                    <strong class="block text-gray-800 mb-1">Zerrendak argitaratzea</strong>
+                    Behin-behineko zerrendak argitaratuko dira.
+                </p>
+                <div class="h-px bg-gray-100 my-3"></div>
+                <p class="text-gray-500 text-sm">
+                    <strong class="block text-gray-700 mb-1">Publicación de listas</strong>
+                    Se publicarán las listas provisionales de admitidos.
+                </p>
+            </div>
+
+            <!-- Paso 3 -->
+            <div class="bg-white p-8 rounded-xl shadow-lg border-t-4 border-sv-accent-3 hover:-translate-y-1 transition duration-300">
+                <div class="text-sv-accent-3 font-bold text-5xl mb-4 opacity-20">03</div>
+                <h3 class="text-xl font-bold text-sv-primary mb-2">Martxoa 26</h3>
+                <p class="text-sm font-semibold text-gray-500 mb-4 uppercase">Marzo 26</p>
+                <p class="text-gray-600 text-sm">
+                    <strong class="block text-gray-800 mb-1">Behin betiko zerrendak</strong>
+                    Erreklamazio epea amaitu ondoren.
+                </p>
+                <div class="h-px bg-gray-100 my-3"></div>
+                <p class="text-gray-500 text-sm">
+                    <strong class="block text-gray-700 mb-1">Listas definitivas</strong>
+                    Tras finalizar el periodo de reclamaciones.
+                </p>
+            </div>
+        </div>
+
+        <!-- CTA FINAL -->
+        <div class="bg-sv-light rounded-3xl p-8 md:p-12 text-center border border-sv-primary/10">
+            <h3 class="text-2xl font-bold text-sv-primary mb-4">Zalantzak dituzu? / ¿Tienes dudas?</h3>
+            <p class="text-gray-600 mb-8 max-w-2xl mx-auto">
+                Deitu lasai edo idatzi mezu bat. Gure idazkaritza taldea prest dago laguntzeko.
+                <br>
+                Llámanos o escríbenos. Nuestro equipo de secretaría está para ayudarte en todo el proceso.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="tel:943628411" class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-sv-primary hover:bg-opacity-90 transition shadow-md">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+                    943 62 84 11
+                </a>
+                <a href="mailto:secretaria@sv-paul.org" class="inline-flex items-center justify-center px-6 py-3 border border-sv-primary text-base font-medium rounded-md text-sv-primary bg-white hover:bg-gray-50 transition shadow-sm">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                    secretaria@sv-paul.org
+                </a>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-white border-t border-gray-100 py-8">
+        <div class="flex justify-center space-x-6">
+            <!-- Iconos sociales (mismo SVG que index) -->
+            <a href="#" class="w-10 h-10 bg-sv-primary rounded-full flex items-center justify-center text-white hover:bg-sv-accent-1 transition"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
+            <!-- ... otros iconos ... -->
+        </div>
+        <div class="border-t border-gray-100 pt-6 text-center text-xs text-gray-500 mt-8">
+            &copy; 2025 Colegio San Vicente de Paúl Irun. Todos los derechos reservados.
+        </div>
+    </footer>
+
+</body>
+</html>
