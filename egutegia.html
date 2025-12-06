@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Egutegia | Calendario</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: { 'sv-primary': '#006D7B', 'sv-accent-1': '#5FB3C5', 'sv-accent-2': '#95C11F', 'sv-accent-3': '#FDC300', 'sv-cta': '#F3953F', 'sv-light': '#F9FAFB' },
+                    fontFamily: { sans: ['Montserrat', 'sans-serif'] }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-white text-gray-800 font-sans">
+
+    <nav class="bg-white shadow-md fixed w-full z-50">
+        <div class="max-w-7xl mx-auto px-4 h-20 flex items-center justify-between">
+            <a href="index.html" class="font-bold text-sv-primary text-lg uppercase">San Vicente de Paúl</a>
+            <div class="hidden md:flex space-x-6 text-xs uppercase font-bold text-gray-500">
+                <a href="index.html" class="hover:text-sv-primary">Hasiera / Inicio</a>
+                <a href="#" class="text-sv-primary">Egutegia / Calendario</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="relative bg-sv-primary h-64 flex items-center justify-center pt-20 overflow-hidden">
+        <div class="absolute inset-0 opacity-20"><img src="https://images.unsplash.com/photo-1506784365847-bbad939e9335?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" class="w-full h-full object-cover"></div>
+        <div class="relative z-10 text-center px-4">
+            <h1 class="text-4xl md:text-5xl font-bold text-white mb-2">Eskola Egutegia</h1>
+            <div class="w-16 h-1 bg-sv-accent-3 mx-auto my-3"></div>
+            <p class="text-white text-xl font-medium tracking-wide opacity-90">Calendario Escolar 2025-2026</p>
+        </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto px-4 py-16">
+        
+        <!-- Descarga PDF -->
+        <div class="bg-sv-light p-8 rounded-xl flex flex-col md:flex-row items-center justify-between gap-6 mb-16 border border-gray-200">
+            <div>
+                <h3 class="text-xl font-bold text-gray-900">Deskargatu Egutegia PDF formatuan</h3>
+                <p class="text-gray-500 text-sm">Descarga el calendario completo en formato PDF</p>
+            </div>
+            <a href="#" class="flex-shrink-0 bg-sv-primary text-white font-bold py-3 px-6 rounded-lg shadow hover:bg-opacity-90 transition flex items-center gap-2">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+                PDF 2025-2026
+            </a>
+        </div>
+
+        <!-- Fechas Clave -->
+        <h2 class="text-2xl font-bold text-sv-primary mb-8 text-center">Data Garrantzitsuak / Fechas Clave</h2>
+        
+        <div class="grid md:grid-cols-2 gap-6">
+            <div class="border-l-4 border-sv-accent-2 bg-white p-6 shadow-sm">
+                <span class="text-xs font-bold text-sv-accent-2 uppercase tracking-wide">Iraila / Septiembre</span>
+                <h3 class="text-lg font-bold text-gray-800 mt-1">Ikasturte hasiera / Comienzo de curso</h3>
+                <p class="text-gray-500 text-sm mt-2">Irailak 7 (Infantil/Primaria) - Irailak 8 (DBH)</p>
+            </div>
+            
+            <div class="border-l-4 border-sv-cta bg-white p-6 shadow-sm">
+                <span class="text-xs font-bold text-sv-cta uppercase tracking-wide">Abendua / Diciembre</span>
+                <h3 class="text-lg font-bold text-gray-800 mt-1">Gabonetako oporrak / Vacaciones Navidad</h3>
+                <p class="text-gray-500 text-sm mt-2">Abenduak 23 - Urtarrilak 6</p>
+            </div>
+
+            <div class="border-l-4 border-sv-accent-1 bg-white p-6 shadow-sm">
+                <span class="text-xs font-bold text-sv-accent-1 uppercase tracking-wide">Apirila / Abril</span>
+                <h3 class="text-lg font-bold text-gray-800 mt-1">Aste Santuko oporrak / Vacaciones Semana Santa</h3>
+                <p class="text-gray-500 text-sm mt-2">Apirilak 2 - Apirilak 13</p>
+            </div>
+
+            <div class="border-l-4 border-sv-primary bg-white p-6 shadow-sm">
+                <span class="text-xs font-bold text-sv-primary uppercase tracking-wide">Ekaina / Junio</span>
+                <h3 class="text-lg font-bold text-gray-800 mt-1">Ikasturte amaiera / Fin de curso</h3>
+                <p class="text-gray-500 text-sm mt-2">Ekainak 21</p>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="bg-white border-t border-gray-100 py-8 text-center text-xs text-gray-500">
+        &copy; 2025 Colegio San Vicente de Paúl Irun.
+    </footer>
+
+</body>
+</html>
