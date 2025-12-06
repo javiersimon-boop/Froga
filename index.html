@@ -3,29 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Colegio Vicenciano Irun | Saber más para servir mejor</title>
-    <meta name="description" content="Centro educativo concertado en Irun. Educación Infantil, Primaria y Secundaria. Formando personas desde la excelencia y los valores vicencianos.">
+    <title>San Vicente de Paúl Irun</title>
     
-    <!-- FUENTES: Montserrat -->
+    <!-- FUENTES -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
-    <!-- ESTILOS: Tailwind CSS -->
+    <!-- ESTILOS PROPIOS -->
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- TAILWIND CSS (Librería de diseño) -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- CONFIGURACIÓN DE MARCA -->
     <script>
+        // Configuración de colores corporativos
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        'vic-teal': '#006D7B',
-                        'vic-dark-teal': '#004a53',
-                        'vic-gold': '#D79B2D',
-                        'vic-red': '#C3272B',
-                        'vic-light': '#F9FAFB',
-                        'vic-dark': '#333333',
+                        'sv-primary': '#006D7B',
+                        'sv-accent-1': '#5FB3C5',
+                        'sv-accent-2': '#95C11F',
+                        'sv-accent-3': '#FDC300',
+                        'sv-cta': '#F3953F',
+                        'sv-light': '#F9FAFB',
                     },
                     fontFamily: {
                         sans: ['Montserrat', 'sans-serif'],
@@ -34,597 +35,186 @@
             }
         }
     </script>
-
-    <style>
-        html { scroll-behavior: smooth; }
-        
-        .hero-bg {
-            background-image: linear-gradient(rgba(0, 45, 55, 0.75), rgba(0, 45, 55, 0.6)), url('https://images.unsplash.com/photo-1544531586-fde5298cdd40?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-        }
-        
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease-out;
-        }
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* ESTILOS PARA LA CAPA DE ESTRATEGIA */
-        .strategy-spot {
-            position: absolute;
-            width: 32px;
-            height: 32px;
-            background-color: #C3272B; /* Vic Red para destacar */
-            border: 2px solid white;
-            border-radius: 50%;
-            cursor: pointer;
-            z-index: 60;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-            display: none; /* Oculto por defecto */
-            animation: pulse-red 2s infinite;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            color: white;
-            font-size: 14px;
-        }
-
-        .strategy-spot::after {
-            content: 'i';
-        }
-
-        .strategy-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0,0,0,0.7);
-            z-index: 100;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-            backdrop-filter: blur(4px);
-        }
-
-        .strategy-content {
-            background: white;
-            padding: 30px;
-            border-radius: 16px;
-            max-width: 500px;
-            width: 100%;
-            position: relative;
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-            animation: slide-up 0.3s ease-out;
-            border-top: 6px solid #C3272B;
-        }
-
-        @keyframes pulse-red {
-            0% { box-shadow: 0 0 0 0 rgba(195, 39, 43, 0.7); transform: scale(1); }
-            70% { box-shadow: 0 0 0 10px rgba(195, 39, 43, 0); transform: scale(1.1); }
-            100% { box-shadow: 0 0 0 0 rgba(195, 39, 43, 0); transform: scale(1); }
-        }
-
-        @keyframes slide-up {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .show-strategy .strategy-spot {
-            display: flex;
-        }
-    </style>
 </head>
-<body class="font-sans text-vic-dark antialiased selection:bg-vic-gold selection:text-white bg-vic-light relative">
+<body class="bg-white text-gray-800">
 
-    <!-- BOTÓN FLOTANTE PARA ACTIVAR ESTRATEGIA -->
-    <button onclick="toggleStrategyMode()" class="fixed bottom-6 right-6 z-[70] bg-vic-dark text-white px-4 py-3 rounded-full shadow-2xl font-bold border-2 border-vic-gold hover:scale-105 transition flex items-center gap-2 text-sm">
-        <span id="strategy-icon">👁️</span>
-        <span id="strategy-text">Ver Análisis Estratégico</span>
-    </button>
-
-    <!-- MODAL DE ESTRATEGIA -->
-    <div id="strategyModal" class="strategy-modal" onclick="closeStrategy(event)">
-        <div class="strategy-content">
-            <h3 id="modalTitle" class="text-2xl font-bold text-vic-teal mb-3">Título</h3>
-            <div class="w-12 h-1 bg-vic-gold mb-4"></div>
-            <p id="modalText" class="text-gray-600 leading-relaxed mb-6">Explicación...</p>
-            <div class="bg-gray-50 p-4 rounded-lg border border-gray-200">
-                <span class="text-xs font-bold text-gray-400 uppercase tracking-wider">Ventaja Competitiva:</span>
-                <p id="modalAdvantage" class="text-sm font-medium text-vic-dark mt-1">Ventaja...</p>
-            </div>
-            <button onclick="closeModal()" class="absolute top-4 right-4 text-gray-400 hover:text-vic-red">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
-            </button>
+    <!-- 1. HERO SECTION -->
+    <header class="relative w-full h-[400px] md:h-[500px] bg-gray-900 overflow-hidden">
+        <div class="absolute inset-0">
+            <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="Fondo Colegio" class="w-full h-full object-cover opacity-60 blur-sm scale-105">
         </div>
-    </div>
-
-    <!-- BARRA DE NAVEGACIÓN -->
-    <nav class="bg-white shadow-md fixed w-full z-50 transition-all duration-300" id="navbar">
-        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <!-- SPOT: NAVEGACIÓN -->
-            <div class="strategy-spot absolute top-4 right-1/2 translate-x-1/2 md:right-40 md:translate-x-0" 
-                 onclick="showStrategy('CTA Directo y Limpieza', 'A diferencia de Txingudi o Dunboa, que usan el menú como un explorador de archivos, aquí simplificamos al máximo. El botón SOLICITAR VISITA destaca sobre el resto.', 'Captación inmediata sin distracciones burocráticas.')"></div>
-
-            <div class="flex justify-between h-20">
-                <div class="flex-shrink-0 flex items-center gap-3 cursor-pointer" onclick="window.scrollTo(0,0)">
-                    <svg class="h-10 w-auto" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M30 40 Q35 10 50 25 Q65 10 70 40" stroke="#006D7B" stroke-width="3" fill="none"/>
-                        <path d="M35 35 Q40 15 50 30 Q60 15 65 35" stroke="#006D7B" stroke-width="2" fill="none"/>
-                        <path d="M50 90 C20 70 10 50 10 35 A 20 20 0 0 1 50 35 A 20 20 0 0 1 90 35 C90 50 80 70 50 90 Z" stroke="#006D7B" stroke-width="3" fill="none"/>
-                        <line x1="50" y1="25" x2="50" y2="75" stroke="#006D7B" stroke-width="3"/>
-                        <line x1="30" y1="45" x2="70" y2="45" stroke="#006D7B" stroke-width="3"/>
-                    </svg>
-                    <div class="flex flex-col leading-none">
-                        <span class="font-bold text-lg text-vic-teal uppercase tracking-wide">San Vicente de Paúl</span>
-                        <span class="text-xs font-semibold text-gray-400 tracking-widest uppercase">Irun • Hijas de la Caridad</span>
+        
+        <div class="absolute inset-0 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pointer-events-none">
+            <div class="h-full flex items-center justify-center md:justify-end">
+                <div class="pointer-events-auto bg-white rounded-lg shadow-2xl p-8 md:p-10 max-w-md w-full mx-4 transform md:translate-y-12 border-t-4 border-sv-accent-3">
+                    <div class="text-center">
+                        <div class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-sv-accent-3/20 text-sv-accent-3 mb-4">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                        </div>
+                        <h2 class="text-xl font-bold text-gray-900 mb-1">Hobeto ezagutu nahi?</h2>
+                        <h3 class="text-lg font-semibold text-gray-600 mb-6">¿Quieres conocernos?</h3>
+                        <a href="#contacto" class="inline-block bg-sv-accent-3/20 text-sv-cta font-bold py-3 px-6 rounded-full hover:bg-sv-accent-3 hover:text-white transition-all duration-300 text-sm tracking-wide uppercase border border-sv-accent-3">
+                            Eskatu Hitzordua / Pide Cita
+                        </a>
                     </div>
                 </div>
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="#etapas" class="text-gray-600 hover:text-vic-teal font-medium transition text-sm uppercase tracking-wide">Etapas</a>
-                    <a href="#proyecto" class="text-gray-600 hover:text-vic-teal font-medium transition text-sm uppercase tracking-wide">Proyecto</a>
-                    <a href="#servicios" class="text-gray-600 hover:text-vic-teal font-medium transition text-sm uppercase tracking-wide">Servicios</a>
-                    <a href="#actualidad" class="text-gray-600 hover:text-vic-teal font-medium transition text-sm uppercase tracking-wide">Noticias</a>
-                    <a href="#contacto" class="bg-vic-teal text-white px-6 py-2 rounded-full font-bold hover:bg-vic-dark-teal transition shadow-md transform hover:-translate-y-0.5 duration-200">
-                        Solicitar Visita
-                    </a>
-                </div>
-                <div class="flex items-center md:hidden">
-                    <button onclick="toggleMenu()" class="text-vic-teal p-2 focus:outline-none">
-                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-                        </svg>
-                    </button>
-                </div>
             </div>
-        </div>
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-t absolute w-full shadow-xl">
-            <div class="px-4 pt-2 pb-6 space-y-2">
-                <a href="#etapas" class="block px-3 py-3 text-base font-medium text-gray-700 border-b border-gray-100" onclick="toggleMenu()">Etapas Educativas</a>
-                <a href="#proyecto" class="block px-3 py-3 text-base font-medium text-gray-700 border-b border-gray-100" onclick="toggleMenu()">Nuestro Proyecto</a>
-                <a href="#servicios" class="block px-3 py-3 text-base font-medium text-gray-700 border-b border-gray-100" onclick="toggleMenu()">Servicios y Comedor</a>
-                <a href="#contacto" class="block w-full text-center mt-4 bg-vic-gold text-white px-4 py-3 rounded-lg font-bold shadow-md" onclick="toggleMenu()">Reservar Cita</a>
-            </div>
-        </div>
-    </nav>
-
-    <!-- HERO SECTION -->
-    <header class="hero-bg min-h-screen flex items-center justify-center text-center px-4 relative pb-32 md:pb-48">
-        <!-- SPOT: COPYWRITING EMOCIONAL -->
-        <div class="strategy-spot absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2" 
-             style="margin-top: -80px;"
-             onclick="showStrategy('Narrativa Aspiracional', 'La competencia pública (Plaiaundi, Dunboa) usa fotos de edificios y textos administrativos. Aquí usamos \'Educamos para la vida\' y fotos de interacción humana.', 'Conexión emocional inmediata con los padres.')"></div>
-
-        <div class="max-w-4xl mx-auto pt-20 relative z-10">
-            <span class="inline-block py-1 px-3 rounded-full bg-vic-gold/20 text-vic-gold border border-vic-gold/40 text-xs font-bold uppercase tracking-widest mb-4 reveal active">
-                Matriculación Abierta 2025/26
-            </span>
-            <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 tracking-tight drop-shadow-lg leading-tight reveal active" style="transition-delay: 0.1s;">
-                No educamos para el examen,<br>
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-vic-gold to-yellow-200">educamos para la vida.</span>
-            </h1>
-            <p class="text-xl md:text-2xl text-gray-200 mb-10 font-light max-w-2xl mx-auto reveal active" style="transition-delay: 0.2s;">
-                Un colegio en Irun donde la excelencia académica se encuentra con los valores humanos. 
-            </p>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center reveal active" style="transition-delay: 0.3s;">
-                <a href="#contacto" class="bg-vic-teal text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-vic-dark-teal transition shadow-xl hover:shadow-2xl transform hover:-translate-y-1 relative z-20">
-                    Quiero conocer el colegio
-                </a>
-                <a href="#video" class="bg-white/10 backdrop-blur-sm text-white border border-white/30 px-8 py-4 rounded-full font-bold text-lg hover:bg-white hover:text-vic-teal transition flex items-center justify-center gap-2 relative z-20">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                    Ver vídeo presentación
-                </a>
-            </div>
-        </div>
-        <div class="absolute bottom-0 left-0 w-full overflow-hidden leading-none z-0">
-            <svg class="relative block w-full h-12 md:h-24" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-                <path d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z" class="fill-vic-light"></path>
-            </svg>
         </div>
     </header>
 
-    <!-- ACCESO RÁPIDO -->
-    <div class="relative z-20 -mt-8 md:-mt-16 mb-20 px-4">
-        <!-- SPOT: USABILIDAD -->
-        <div class="strategy-spot absolute -top-6 left-1/2 -translate-x-1/2" 
-             onclick="showStrategy('Segmentación de Audiencia', 'Aquí aplicamos la lección de Bidasoa/Plaiaundi pero mejorada. Damos servicio a los padres actuales (Alexia, Pagos) sin que estos enlaces ensucien el menú principal de venta.', 'Mantiene la web limpia para captación y útil para familias.')"></div>
-
-        <div class="max-w-6xl mx-auto bg-white rounded-2xl shadow-xl p-4 md:p-8 grid grid-cols-2 md:grid-cols-4 gap-4 md:divide-x divide-gray-100">
-            <a href="#" class="flex flex-col items-center justify-center p-4 hover:bg-gray-50 rounded-xl transition group text-center">
-                <div class="bg-vic-light p-3 rounded-full mb-3 group-hover:bg-vic-teal group-hover:text-white text-vic-teal transition duration-300">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
-                </div>
-                <span class="font-bold text-gray-800">Plataforma Alexia</span>
-                <span class="text-xs text-gray-500">Gestión académica</span>
-            </a>
-            <a href="#" class="flex flex-col items-center justify-center p-4 hover:bg-gray-50 rounded-xl transition group text-center">
-                <div class="bg-vic-light p-3 rounded-full mb-3 group-hover:bg-vic-teal group-hover:text-white text-vic-teal transition duration-300">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/></svg>
-                </div>
-                <span class="font-bold text-gray-800">Pagos / Tienda</span>
-                <span class="text-xs text-gray-500">Gestión recibos</span>
-            </a>
-            <a href="#" class="flex flex-col items-center justify-center p-4 hover:bg-gray-50 rounded-xl transition group text-center">
-                <div class="bg-vic-light p-3 rounded-full mb-3 group-hover:bg-vic-teal group-hover:text-white text-vic-teal transition duration-300">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                </div>
-                <span class="font-bold text-gray-800">Menú Comedor</span>
-                <span class="text-xs text-gray-500">Consulta mensual</span>
-            </a>
-            <a href="#" class="flex flex-col items-center justify-center p-4 hover:bg-gray-50 rounded-xl transition group text-center">
-                <div class="bg-vic-light p-3 rounded-full mb-3 group-hover:bg-vic-teal group-hover:text-white text-vic-teal transition duration-300">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
-                </div>
-                <span class="font-bold text-gray-800">Calendario</span>
-                <span class="text-xs text-gray-500">Eventos del curso</span>
-            </a>
-        </div>
-    </div>
-
-    <!-- ETAPAS EDUCATIVAS -->
-    <section id="etapas" class="py-16 px-4 bg-vic-light relative">
-        <!-- SPOT: ARQUITECTURA -->
-        <div class="strategy-spot absolute top-20 left-1/2 -translate-x-1/2" 
-             onclick="showStrategy('Claridad vs Caos', 'Centros como Toki Alai usan menús densos para sus edificios. Nosotros usamos tarjetas visuales limpias para las etapas, como La Salle, facilitando que el padre encuentre rápido lo que busca según la edad de su hijo.', 'Reducción de la carga cognitiva.')"></div>
-
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-16 reveal">
-                <h2 class="text-vic-teal font-bold text-3xl md:text-4xl mb-4 uppercase tracking-wide">Oferta Educativa</h2>
-                <div class="w-20 h-1 bg-vic-gold mx-auto mb-6"></div>
-                <p class="text-gray-600 max-w-2xl mx-auto text-lg">Acompañamos a tu hijo/a en cada paso, desde sus primeros descubrimientos hasta su madurez académica.</p>
-            </div>
-
-            <div class="grid md:grid-cols-3 gap-8">
-                <!-- Infantil -->
-                <article class="group bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 reveal">
-                    <div class="relative h-64 overflow-hidden">
-                        <div class="absolute inset-0 bg-vic-teal/20 group-hover:bg-transparent transition z-10"></div>
-                        <img src="https://images.unsplash.com/photo-1587654780291-39c9404d746b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Educación Infantil" class="w-full h-full object-cover transition duration-700 group-hover:scale-110">
-                    </div>
-                    <div class="p-8">
-                        <h3 class="text-2xl font-bold text-vic-teal mb-3">Educación Infantil</h3>
-                        <p class="text-gray-500 text-sm font-semibold mb-4 uppercase tracking-wide">2 - 6 Años</p>
-                        <p class="text-gray-600 mb-6 leading-relaxed">Estimulación temprana, bilingüismo y educación emocional en un entorno seguro y familiar.</p>
-                        <a href="#" class="inline-flex items-center text-vic-gold font-bold hover:text-vic-teal transition">
-                            Ver metodología <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-                        </a>
-                    </div>
-                </article>
-                <!-- Primaria -->
-                <article class="group bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 reveal" style="transition-delay: 0.1s;">
-                    <div class="relative h-64 overflow-hidden">
-                        <div class="absolute inset-0 bg-vic-teal/20 group-hover:bg-transparent transition z-10"></div>
-                        <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Educación Primaria" class="w-full h-full object-cover transition duration-700 group-hover:scale-110">
-                    </div>
-                    <div class="p-8">
-                        <h3 class="text-2xl font-bold text-vic-teal mb-3">Educación Primaria</h3>
-                        <p class="text-gray-500 text-sm font-semibold mb-4 uppercase tracking-wide">6 - 12 Años</p>
-                        <p class="text-gray-600 mb-6 leading-relaxed">Innovación pedagógica, proyectos cooperativos y atención personalizada para potenciar el talento.</p>
-                        <a href="#" class="inline-flex items-center text-vic-gold font-bold hover:text-vic-teal transition">
-                            Ver metodología <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-                        </a>
-                    </div>
-                </article>
-                <!-- Secundaria -->
-                <article class="group bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 reveal" style="transition-delay: 0.2s;">
-                    <div class="relative h-64 overflow-hidden">
-                        <div class="absolute inset-0 bg-vic-teal/20 group-hover:bg-transparent transition z-10"></div>
-                        <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Educación Secundaria" class="w-full h-full object-cover transition duration-700 group-hover:scale-110">
-                    </div>
-                    <div class="p-8">
-                        <h3 class="text-2xl font-bold text-vic-teal mb-3">Secundaria (ESO)</h3>
-                        <p class="text-gray-500 text-sm font-semibold mb-4 uppercase tracking-wide">12 - 16 Años</p>
-                        <p class="text-gray-600 mb-6 leading-relaxed">Excelencia académica, idiomas y valores. Preparamos a los jóvenes para ser ciudadanos del mundo.</p>
-                        <a href="#" class="inline-flex items-center text-vic-gold font-bold hover:text-vic-teal transition">
-                            Ver metodología <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-                        </a>
-                    </div>
-                </article>
-            </div>
-        </div>
-    </section>
-
-    <!-- VALORES -->
-    <section id="proyecto" class="py-20 bg-white relative overflow-hidden">
-        <div class="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 bg-vic-gold/10 rounded-full blur-3xl"></div>
-
-        <!-- SPOT: MARCA -->
-        <div class="strategy-spot absolute top-24 left-10" 
-             onclick="showStrategy('Propuesta de Valor Única', 'Competimos con la \'innovación\' de Bidasoa (drones) y el \'elitismo\' de Erain usando la \'Pedagogía del Corazón\'. Es un nicho emocional que nadie más está ocupando en Irun.', 'Posicionamiento Humanista-Premium.')"></div>
-
-        <div class="max-w-7xl mx-auto px-4 relative z-10">
-            <div class="grid md:grid-cols-2 gap-16 items-center">
-                <div class="reveal">
-                    <h2 class="text-vic-teal font-bold text-3xl md:text-4xl mb-6">¿Por qué elegirnos?</h2>
-                    <div class="space-y-8">
-                        <div class="flex gap-4">
-                            <div class="flex-shrink-0 w-12 h-12 bg-vic-light rounded-full flex items-center justify-center text-vic-red">
-                                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-xl text-gray-800 mb-1">Pedagogía del Corazón</h4>
-                                <p class="text-gray-600">Educamos desde la cercanía, conociendo a cada alumno por su nombre y acompañándolo en su crecimiento personal.</p>
-                            </div>
-                        </div>
-                        <div class="flex gap-4">
-                            <div class="flex-shrink-0 w-12 h-12 bg-vic-light rounded-full flex items-center justify-center text-vic-gold">
-                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-xl text-gray-800 mb-1">Innovación Real</h4>
-                                <p class="text-gray-600">Integramos nuevas tecnologías y metodologías activas sin perder la esencia de la enseñanza humanista.</p>
-                            </div>
-                        </div>
-                        <div class="flex gap-4">
-                            <div class="flex-shrink-0 w-12 h-12 bg-vic-light rounded-full flex items-center justify-center text-vic-teal">
-                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-xl text-gray-800 mb-1">Trilingüismo</h4>
-                                <p class="text-gray-600">Apostamos por el Euskera, Castellano e Inglés como herramientas fundamentales para el futuro.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="relative reveal" style="transition-delay: 0.2s;">
-                    <div class="absolute inset-0 bg-vic-teal transform rotate-3 rounded-3xl opacity-20"></div>
-                    <img src="https://images.unsplash.com/photo-1577896333093-59a1557ae3d1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" alt="Alumnos en clase" class="relative rounded-3xl shadow-2xl w-full h-auto object-cover">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ESTADÍSTICAS -->
-    <section class="bg-vic-teal py-16 text-white">
-        <div class="max-w-7xl mx-auto px-4">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-                <div class="p-4">
-                    <span class="block text-4xl md:text-5xl font-bold mb-2 text-vic-gold">+60</span>
-                    <span class="text-sm md:text-base uppercase tracking-wider opacity-90">Años educando</span>
-                </div>
-                <div class="p-4">
-                    <span class="block text-4xl md:text-5xl font-bold mb-2 text-vic-gold">100%</span>
-                    <span class="text-sm md:text-base uppercase tracking-wider opacity-90">Aprobados</span>
-                </div>
-                <div class="p-4">
-                    <span class="block text-4xl md:text-5xl font-bold mb-2 text-vic-gold">3</span>
-                    <span class="text-sm md:text-base uppercase tracking-wider opacity-90">Idiomas</span>
-                </div>
-                <div class="p-4">
-                    <span class="block text-4xl md:text-5xl font-bold mb-2 text-vic-gold">1</span>
-                    <span class="text-sm md:text-base uppercase tracking-wider opacity-90">Gran Familia</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- TESTIMONIOS -->
-    <section class="py-20 bg-vic-light relative">
-        <!-- SPOT: PRUEBA SOCIAL -->
-        <div class="strategy-spot absolute top-24 right-10" 
-             onclick="showStrategy('Prueba Social', 'El punto débil de los colegios públicos es la percepción de \'frialdad\'. Con estos testimonios atacamos ese flanco, mostrando calidez y satisfacción real de otras familias.', 'Generación de confianza.')"></div>
-
-        <div class="max-w-7xl mx-auto px-4">
-            <div class="text-center mb-12 reveal">
-                <h2 class="text-vic-teal font-bold text-3xl md:text-4xl mb-4">Lo que dicen las familias</h2>
-            </div>
-            <div class="grid md:grid-cols-3 gap-6">
-                <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100 reveal">
-                    <div class="flex text-vic-gold mb-4">★★★★★</div>
-                    <p class="text-gray-600 mb-6 italic">"Lo mejor del colegio no son solo las instalaciones, sino el trato humano. Mis hijos van felices cada mañana, y eso para mí no tiene precio."</p>
-                    <div class="flex items-center gap-4">
-                        <div class="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center font-bold text-gray-500">M</div>
-                        <div>
-                            <span class="block font-bold text-gray-800">María G.</span>
-                            <span class="text-xs text-gray-500">Madre de Primaria</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100 reveal" style="transition-delay: 0.1s;">
-                    <div class="flex text-vic-gold mb-4">★★★★★</div>
-                    <p class="text-gray-600 mb-6 italic">"El nivel académico es excelente, pero lo que más valoro es cómo les enseñan a ser buenas personas. Los valores vicencianos se notan."</p>
-                    <div class="flex items-center gap-4">
-                        <div class="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center font-bold text-gray-500">J</div>
-                        <div>
-                            <span class="block font-bold text-gray-800">Javier A.</span>
-                            <span class="text-xs text-gray-500">Padre de Secundaria</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100 reveal" style="transition-delay: 0.2s;">
-                    <div class="flex text-vic-gold mb-4">★★★★★</div>
-                    <p class="text-gray-600 mb-6 italic">"La atención a la diversidad es real. Han sabido sacar lo mejor de mi hija adaptándose a su ritmo. Muy agradecidos al profesorado."</p>
-                    <div class="flex items-center gap-4">
-                        <div class="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center font-bold text-gray-500">L</div>
-                        <div>
-                            <span class="block font-bold text-gray-800">Leire M.</span>
-                            <span class="text-xs text-gray-500">Madre de Infantil</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA FINAL / CONTACTO -->
-    <section id="contacto" class="py-20 bg-white relative">
-         <!-- SPOT: CAPTACIÓN -->
-         <div class="strategy-spot absolute bottom-20 left-10" 
-              onclick="showStrategy('Captación de Leads', 'Solo Erain hace esto bien. En lugar de esperar a que llamen, ofrecemos un formulario directo. Esto nos permite contactar proactivamente a los padres interesados.', 'Aumento del ratio de conversión.')"></div>
-
-        <div class="max-w-5xl mx-auto px-4">
-            <div class="bg-vic-dark rounded-3xl overflow-hidden shadow-2xl flex flex-col md:flex-row reveal">
-                <div class="p-10 md:p-16 md:w-1/2 text-white flex flex-col justify-center">
-                    <h3 class="text-3xl font-bold mb-4">¿Quieres visitar el colegio?</h3>
-                    <p class="text-gray-300 mb-8">Las puertas de San Vicente de Paúl están abiertas. Ven a conocer nuestras instalaciones y proyecto educativo sin compromiso.</p>
-                    <div class="space-y-4">
-                        <div class="flex items-center gap-4">
-                            <div class="bg-vic-teal p-2 rounded-lg">
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
-                            </div>
-                            <span>943 62 84 11</span>
-                        </div>
-                        <div class="flex items-center gap-4">
-                            <div class="bg-vic-teal p-2 rounded-lg">
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-                            </div>
-                            <span>secretaria@sv-paul.org</span>
-                        </div>
-                        <div class="flex items-center gap-4">
-                            <div class="bg-vic-teal p-2 rounded-lg">
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-                            </div>
-                            <span>C/ Eguzkitza, 13, 20304 Irun</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="p-10 md:p-16 md:w-1/2 bg-gray-50">
-                    <form class="space-y-4">
-                        <div>
-                            <label class="block text-sm font-bold text-gray-700 mb-1">Nombre</label>
-                            <input type="text" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-vic-teal focus:border-transparent outline-none transition" placeholder="Tu nombre">
+    <!-- CONTENEDOR PRINCIPAL -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20">
+        
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+            
+            <!-- 2. COLUMNA IZQUIERDA (Tarjetas Verticales) -->
+            <div class="lg:col-span-4 space-y-6">
+                <!-- Tarjeta 1: Proyecto -->
+                <a href="#" class="block bg-white rounded-xl shadow-md border border-gray-100 p-6 hover:shadow-lg transition-all group">
+                    <div class="flex items-start gap-4">
+                        <div class="p-3 bg-blue-50 rounded-lg text-sv-primary group-hover:bg-sv-primary group-hover:text-white transition-colors">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
                         </div>
                         <div>
-                            <label class="block text-sm font-bold text-gray-700 mb-1">Teléfono</label>
-                            <input type="tel" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-vic-teal focus:border-transparent outline-none transition" placeholder="Tu teléfono">
+                            <h3 class="font-bold text-gray-900 text-lg">Hezkuntza Proiektua</h3>
+                            <p class="text-sm text-gray-500 mb-2">Berrikuntza eta laguntza pertsonala...</p>
+                            <div class="h-px w-full bg-gray-100 my-2"></div>
+                            <h3 class="font-bold text-gray-900 text-lg">Proyecto Educativo</h3>
+                            <p class="text-sm text-gray-500 mb-2">Un modelo de enseñanza que integra...</p>
+                            <span class="text-xs font-bold text-sv-accent-1 uppercase tracking-wide group-hover:text-sv-primary transition-colors">Gehiago irakurri &rarr;</span>
+                        </div>
+                    </div>
+                </a>
+                <!-- Tarjeta 2: Prematrícula -->
+                <a href="#" class="block bg-white rounded-xl shadow-md border border-gray-100 p-6 hover:shadow-lg transition-all group">
+                    <div class="flex items-start gap-4">
+                        <div class="p-3 bg-green-50 rounded-lg text-sv-primary group-hover:bg-sv-primary group-hover:text-white transition-colors">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
                         </div>
                         <div>
-                            <label class="block text-sm font-bold text-gray-700 mb-1">Etapa de interés</label>
-                            <select class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-vic-teal focus:border-transparent outline-none transition">
-                                <option>Educación Infantil</option>
-                                <option>Educación Primaria</option>
-                                <option>Educación Secundaria</option>
-                            </select>
+                            <h3 class="font-bold text-gray-900 text-lg">Aurre-matrikula 2026</h3>
+                            <p class="text-sm text-gray-500 mb-2">Ezagutu gure hezkuntza-komunitatearekin...</p>
+                            <div class="h-px w-full bg-gray-100 my-2"></div>
+                            <h3 class="font-bold text-gray-900 text-lg">Prematrícula 2026</h3>
+                            <p class="text-sm text-gray-500 mb-2">Descubre el proceso para unirte...</p>
+                            <span class="text-xs font-bold text-sv-accent-2 uppercase tracking-wide group-hover:text-sv-primary transition-colors">Gehiago irakurri &rarr;</span>
                         </div>
-                        <button type="button" class="w-full bg-vic-gold text-white font-bold py-3 rounded-lg hover:bg-yellow-600 transition shadow-lg">
-                            Solicitar Información
-                        </button>
-                    </form>
+                    </div>
+                </a>
+                <!-- Tarjeta 3: Contacto -->
+                <a href="#" class="block bg-white rounded-xl shadow-md border border-gray-100 p-6 hover:shadow-lg transition-all group">
+                    <div class="flex items-start gap-4">
+                        <div class="p-3 bg-yellow-50 rounded-lg text-sv-primary group-hover:bg-sv-primary group-hover:text-white transition-colors">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-gray-900 text-lg">Kontaktua eta Bisitak</h3>
+                            <p class="text-sm text-gray-500 mb-2">Hemen gaude laguntzeko...</p>
+                            <div class="h-px w-full bg-gray-100 my-2"></div>
+                            <h3 class="font-bold text-gray-900 text-lg">Contacto y Visitas</h3>
+                            <p class="text-sm text-gray-500 mb-2">Estamos aquí para ayudarte...</p>
+                            <span class="text-xs font-bold text-sv-accent-3 uppercase tracking-wide group-hover:text-sv-primary transition-colors">Gehiago irakurri &rarr;</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- 3. COLUMNA DERECHA (Noticias Dinámicas) -->
+            <div class="lg:col-span-8">
+                <div class="border-b-2 border-sv-accent-1 pb-4 mb-8 flex justify-between items-end">
+                    <div>
+                        <h2 class="text-3xl font-bold text-sv-primary">Azken Albisteak</h2>
+                        <span class="text-xl font-medium text-gray-400">Últimas Noticias</span>
+                    </div>
                 </div>
+
+                <div id="news-container" class="space-y-10">
+                    <div class="loader"></div> <!-- Spinner de carga -->
+                </div>
+
+                <div class="mt-12 text-center lg:text-left">
+                    <a href="https://sites.google.com/sanvicenteirun.com/web/noticias" class="inline-block bg-sv-primary text-white font-bold py-3 px-8 rounded-lg shadow-md hover:bg-sv-dark-teal hover:shadow-lg transition-all">
+                        Albiste Guztiak Ikusi <span class="opacity-70 font-normal">| Ver Todas</span>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- 4. SECCIÓN ACCESOS RÁPIDOS -->
+        <div class="mt-20">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Horarios -->
+                <a href="#" class="group bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md hover:-translate-y-1 transition-all text-center flex flex-col items-center">
+                    <div class="w-12 h-12 bg-sv-light rounded-full flex items-center justify-center text-sv-primary mb-4 group-hover:bg-sv-primary group-hover:text-white transition-colors">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                    </div>
+                    <span class="block font-bold text-gray-900 text-lg">Ordutegiak</span>
+                    <span class="block font-bold text-gray-500 text-base mb-1">Horarios</span>
+                    <span class="text-xs text-gray-400 uppercase tracking-wide">Eskola-jardunaldia</span>
+                </a>
+                <!-- Secretaría -->
+                <a href="#" class="group bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md hover:-translate-y-1 transition-all text-center flex flex-col items-center">
+                    <div class="w-12 h-12 bg-sv-light rounded-full flex items-center justify-center text-sv-primary mb-4 group-hover:bg-sv-primary group-hover:text-white transition-colors">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                    </div>
+                    <span class="block font-bold text-gray-900 text-lg">Idazkaritza</span>
+                    <span class="block font-bold text-gray-500 text-base mb-1">Secretaría</span>
+                    <span class="text-xs text-gray-400 uppercase tracking-wide">Gestioak / Trámites</span>
+                </a>
+                <!-- Comedor -->
+                <a href="#" class="group bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md hover:-translate-y-1 transition-all text-center flex flex-col items-center">
+                    <div class="w-12 h-12 bg-sv-light rounded-full flex items-center justify-center text-sv-primary mb-4 group-hover:bg-sv-primary group-hover:text-white transition-colors">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+                    </div>
+                    <span class="block font-bold text-gray-900 text-lg">Jangela</span>
+                    <span class="block font-bold text-gray-500 text-base mb-1">Comedor</span>
+                    <span class="text-xs text-gray-400 uppercase tracking-wide">Hileroko Menua</span>
+                </a>
+                <!-- Calendario -->
+                <a href="#" class="group bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md hover:-translate-y-1 transition-all text-center flex flex-col items-center">
+                    <div class="w-12 h-12 bg-sv-light rounded-full flex items-center justify-center text-sv-primary mb-4 group-hover:bg-sv-primary group-hover:text-white transition-colors">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                    </div>
+                    <span class="block font-bold text-gray-900 text-lg">Egutegia</span>
+                    <span class="block font-bold text-gray-500 text-base mb-1">Calendario</span>
+                    <span class="text-xs text-gray-400 uppercase tracking-wide">Ekitaldiak / Eventos</span>
+                </a>
             </div>
         </div>
-    </section>
 
-    <!-- FOOTER -->
-    <footer class="bg-vic-dark text-white pt-12 pb-6 relative">
-        <!-- SPOT: TECNOLOGÍA -->
-        <div class="strategy-spot absolute top-10 right-10" 
-             onclick="showStrategy('Stack Tecnológico', 'A diferencia de Elatzeta (Wix) o los públicos (Liferay), esta web usa HTML + Tailwind. Esto garantiza una velocidad de carga casi instantánea y un \'Code Bloat\' de cero.', 'Superioridad técnica y SEO.')"></div>
+        <!-- 5. PIE DE ENLACES -->
+        <div class="mt-16 pt-10 border-t border-gray-100">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                <a href="#" class="flex items-center gap-4 p-4 border border-gray-100 rounded-lg hover:border-sv-accent-1 hover:bg-gray-50 transition group">
+                    <div class="p-2 bg-sv-light rounded text-sv-primary group-hover:text-white group-hover:bg-sv-primary transition"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg></div>
+                    <div><span class="block font-bold text-sv-primary text-sm">Nor gara</span><span class="text-xs text-gray-500">Quiénes somos</span></div>
+                </a>
+                <a href="#" class="flex items-center gap-4 p-4 border border-gray-100 rounded-lg hover:border-sv-accent-1 hover:bg-gray-50 transition group">
+                    <div class="p-2 bg-sv-light rounded text-sv-primary group-hover:text-white group-hover:bg-sv-primary transition"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg></div>
+                    <div><span class="block font-bold text-sv-primary text-sm">Hezkuntza Eskaintza</span><span class="text-xs text-gray-500">Oferta educativa</span></div>
+                </a>
+                <a href="#" class="flex items-center gap-4 p-4 border border-gray-100 rounded-lg hover:border-sv-accent-1 hover:bg-gray-50 transition group">
+                    <div class="p-2 bg-sv-light rounded text-sv-primary group-hover:text-white group-hover:bg-sv-primary transition"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg></div>
+                    <div><span class="block font-bold text-sv-primary text-sm">Zerbitzuak</span><span class="text-xs text-gray-500">Servicios</span></div>
+                </a>
+                <!-- Más enlaces -->
+            </div>
+        </div>
 
-        <div class="max-w-7xl mx-auto px-4">
-            <div class="grid md:grid-cols-4 gap-8 mb-8">
-                <div class="col-span-1 md:col-span-2">
-                    <div class="flex items-center gap-2 mb-4">
-                        <svg class="h-8 w-auto" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M30 40 Q35 10 50 25 Q65 10 70 40" stroke="#FFFFFF" stroke-width="3" fill="none"/>
-                            <path d="M35 35 Q40 15 50 30 Q60 15 65 35" stroke="#FFFFFF" stroke-width="2" fill="none"/>
-                            <path d="M50 90 C20 70 10 50 10 35 A 20 20 0 0 1 50 35 A 20 20 0 0 1 90 35 C90 50 80 70 50 90 Z" stroke="#FFFFFF" stroke-width="3" fill="none"/>
-                        </svg>
-                        <span class="font-bold text-xl uppercase">San Vicente de Paúl</span>
-                    </div>
-                    <p class="text-gray-400 text-sm max-w-xs">Un centro de las Hijas de la Caridad. Educando corazón y mente desde hace más de 60 años en Irun.</p>
-                </div>
-                <div>
-                    <h4 class="font-bold mb-4 text-vic-gold">Enlaces</h4>
-                    <ul class="space-y-2 text-sm text-gray-400">
-                        <li><a href="#" class="hover:text-white transition">Aviso Legal</a></li>
-                        <li><a href="#" class="hover:text-white transition">Política de Privacidad</a></li>
-                        <li><a href="#" class="hover:text-white transition">Política de Cookies</a></li>
-                        <li><a href="#" class="hover:text-white transition">Canal Ético</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="font-bold mb-4 text-vic-gold">Síguenos</h4>
-                    <div class="flex space-x-4">
-                        <a href="#" class="w-8 h-8 bg-gray-700 rounded-full flex items-center justify-center hover:bg-vic-teal transition">F</a>
-                        <a href="#" class="w-8 h-8 bg-gray-700 rounded-full flex items-center justify-center hover:bg-vic-teal transition">I</a>
-                        <a href="#" class="w-8 h-8 bg-gray-700 rounded-full flex items-center justify-center hover:bg-vic-teal transition">X</a>
-                    </div>
-                </div>
-            </div>
-            <div class="border-t border-gray-800 pt-6 text-center text-xs text-gray-500">
-                &copy; 2025 Colegio San Vicente de Paúl Irun. Todos los derechos reservados.
-            </div>
+    </main>
+
+    <!-- FOOTER SOCIAL -->
+    <footer class="bg-white border-t border-gray-100 py-8">
+        <div class="flex justify-center space-x-6">
+            <a href="#" class="w-10 h-10 bg-sv-primary rounded-full flex items-center justify-center text-white hover:bg-sv-accent-1 transition"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
+            <a href="#" class="w-10 h-10 bg-sv-primary rounded-full flex items-center justify-center text-white hover:bg-sv-accent-1 transition"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+            <a href="#" class="w-10 h-10 bg-sv-primary rounded-full flex items-center justify-center text-white hover:bg-sv-accent-1 transition"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
         </div>
     </footer>
 
-    <!-- SCRIPTS -->
-    <script>
-        // LÓGICA DEL MODO ESTRATEGIA
-        let strategyMode = false;
-        
-        function toggleStrategyMode() {
-            strategyMode = !strategyMode;
-            const body = document.body;
-            const btnText = document.getElementById('strategy-text');
-            const btnIcon = document.getElementById('strategy-icon');
+    <!-- LÓGICA DE JAVASCRIPT -->
+    <script src="script.js"></script>
 
-            if (strategyMode) {
-                body.classList.add('show-strategy');
-                btnText.textContent = 'Ocultar Análisis';
-                btnIcon.textContent = '❌';
-            } else {
-                body.classList.remove('show-strategy');
-                btnText.textContent = 'Ver Análisis Estratégico';
-                btnIcon.textContent = '👁️';
-                closeModal();
-            }
-        }
-
-        function showStrategy(title, text, advantage) {
-            const modal = document.getElementById('strategyModal');
-            document.getElementById('modalTitle').textContent = title;
-            document.getElementById('modalText').textContent = text;
-            document.getElementById('modalAdvantage').textContent = advantage;
-            modal.style.display = 'flex';
-        }
-
-        function closeStrategy(e) {
-            if (e.target.id === 'strategyModal') {
-                closeModal();
-            }
-        }
-
-        function closeModal() {
-            document.getElementById('strategyModal').style.display = 'none';
-        }
-
-        // Funcionalidad base
-        function toggleMenu() {
-            const menu = document.getElementById('mobile-menu');
-            menu.classList.toggle('hidden');
-        }
-
-        function reveal() {
-            var reveals = document.querySelectorAll(".reveal");
-            for (var i = 0; i < reveals.length; i++) {
-                var windowHeight = window.innerHeight;
-                var elementTop = reveals[i].getBoundingClientRect().top;
-                var elementVisible = 100;
-                if (elementTop < windowHeight - elementVisible) {
-                    reveals[i].classList.add("active");
-                }
-            }
-        }
-        window.addEventListener("scroll", reveal);
-        reveal();
-
-        window.addEventListener('scroll', function() {
-            const navbar = document.getElementById('navbar');
-            if (window.scrollY > 50) {
-                navbar.classList.add('shadow-lg', 'bg-white/95', 'backdrop-blur-md');
-            } else {
-                navbar.classList.remove('shadow-lg', 'bg-white/95', 'backdrop-blur-md');
-            }
-        });
-    </script>
 </body>
 </html>
