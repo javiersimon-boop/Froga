@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ikas Komunitateak | Comunidades de Aprendizaje</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: { 'sv-primary': '#006D7B', 'sv-accent-1': '#5FB3C5', 'sv-accent-2': '#95C11F', 'sv-accent-3': '#FDC300', 'sv-cta': '#F3953F', 'sv-light': '#F9FAFB' },
+                    fontFamily: { sans: ['Montserrat', 'sans-serif'] }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-white text-gray-800 font-sans">
+
+    <nav class="bg-white shadow-md fixed w-full z-50">
+        <div class="max-w-7xl mx-auto px-4 h-20 flex items-center justify-between">
+            <a href="index.html" class="font-bold text-sv-primary text-lg uppercase">San Vicente de Paúl</a>
+            <div class="hidden md:flex space-x-6 text-xs uppercase font-bold text-gray-500">
+                <a href="index.html" class="hover:text-sv-primary">Hasiera / Inicio</a>
+                <a href="#" class="text-sv-primary">Ikas Komunitateak</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="relative bg-sv-primary h-64 flex items-center justify-center pt-20 overflow-hidden">
+        <div class="absolute inset-0 opacity-20"><img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" class="w-full h-full object-cover"></div>
+        <div class="relative z-10 text-center px-4">
+            <h1 class="text-4xl md:text-5xl font-bold text-white mb-2">Ikas Komunitateak</h1>
+            <div class="w-16 h-1 bg-sv-accent-3 mx-auto my-3"></div>
+            <p class="text-white text-xl font-medium tracking-wide opacity-90">Comunidades de Aprendizaje</p>
+        </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto px-4 py-16 space-y-16">
+        
+        <div class="text-center max-w-3xl mx-auto">
+            <h2 class="text-2xl font-bold text-gray-900 mb-6">Amets egiten dugun eskola <br><span class="text-gray-500 font-normal">La escuela que soñamos</span></h2>
+            <p class="text-gray-600 leading-relaxed mb-6">
+                Gizarte eta hezkuntza eraldaketara bideratutako proiektua gara. Komunitate osoaren parte-hartzean oinarritzen den ikaskuntza eredua.
+            </p>
+            <p class="text-gray-600 leading-relaxed">
+                Somos un proyecto de transformación social y educativa. Un modelo de aprendizaje basado en la participación de toda la comunidad.
+            </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8">
+            <div class="bg-sv-light p-8 rounded-2xl border-t-4 border-sv-accent-1 hover:shadow-lg transition">
+                <div class="bg-white w-12 h-12 rounded-full flex items-center justify-center text-sv-primary mb-4 shadow-sm text-xl font-bold">1</div>
+                <h3 class="text-xl font-bold text-gray-900 mb-2">Talde Elkarreragileak</h3>
+                <p class="text-sm text-gray-500 mb-4 uppercase tracking-wide">Grupos Interactivos</p>
+                <p class="text-gray-600">Ikasgelan boluntarioen laguntzarekin egindako talde txikiak, elkarrizketa eta elkartasuna sustatzeko.</p>
+                <p class="text-gray-500 text-sm mt-2 italic">Pequeños grupos en el aula con voluntarios para fomentar el diálogo y la solidaridad.</p>
+            </div>
+
+            <div class="bg-sv-light p-8 rounded-2xl border-t-4 border-sv-accent-2 hover:shadow-lg transition">
+                <div class="bg-white w-12 h-12 rounded-full flex items-center justify-center text-sv-primary mb-4 shadow-sm text-xl font-bold">2</div>
+                <h3 class="text-xl font-bold text-gray-900 mb-2">Solasaldi Dialogikoak</h3>
+                <p class="text-sm text-gray-500 mb-4 uppercase tracking-wide">Tertulias Dialógicas</p>
+                <p class="text-gray-600">Literatura, musika edo artearen inguruko hausnarketa kolektiboa, berdintasunezko elkarrizketan oinarrituta.</p>
+                <p class="text-gray-500 text-sm mt-2 italic">Reflexión colectiva sobre literatura, música o arte, basada en el diálogo igualitario.</p>
+            </div>
+
+            <div class="bg-sv-light p-8 rounded-2xl border-t-4 border-sv-accent-3 hover:shadow-lg transition">
+                <div class="bg-white w-12 h-12 rounded-full flex items-center justify-center text-sv-primary mb-4 shadow-sm text-xl font-bold">3</div>
+                <h3 class="text-xl font-bold text-gray-900 mb-2">Senideen Prestakuntza</h3>
+                <p class="text-sm text-gray-500 mb-4 uppercase tracking-wide">Formación de Familiares</p>
+                <p class="text-gray-600">Familien beharrei erantzuteko prestakuntza saioak (hizkuntzak, teknologia, etab.).</p>
+                <p class="text-gray-500 text-sm mt-2 italic">Sesiones de formación para responder a las necesidades de las familias.</p>
+            </div>
+
+            <div class="bg-sv-light p-8 rounded-2xl border-t-4 border-sv-cta hover:shadow-lg transition">
+                <div class="bg-white w-12 h-12 rounded-full flex items-center justify-center text-sv-primary mb-4 shadow-sm text-xl font-bold">4</div>
+                <h3 class="text-xl font-bold text-gray-900 mb-2">Batzorde Mistoak</h3>
+                <p class="text-sm text-gray-500 mb-4 uppercase tracking-wide">Comisiones Mixtas</p>
+                <p class="text-gray-600">Irakasle, familia eta ikasleek osatutako lantaldeak, eskolako bizitza hobetzeko.</p>
+                <p class="text-gray-500 text-sm mt-2 italic">Grupos de trabajo formados por profes, familias y alumnos para mejorar la vida escolar.</p>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="bg-white border-t border-gray-100 py-8 text-center text-xs text-gray-500">
+        &copy; 2025 Colegio San Vicente de Paúl Irun.
+    </footer>
+
+</body>
+</html>
