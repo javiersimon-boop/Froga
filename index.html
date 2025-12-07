@@ -372,8 +372,9 @@
                     return;
                 }
 
-                // Renderizar las 3 primeras noticias
-                newsItems.slice(0, 3).forEach(news => {
+                // MODIFICACIÓN: Invertimos el array (.reverse) antes de cortar (.slice)
+                // Esto hace que se muestren las últimas filas del Excel primero (Noticias más recientes)
+                newsItems.reverse().slice(0, 3).forEach(news => {
                     const html = createNewsHTML(news);
                     container.insertAdjacentHTML('beforeend', html);
                 });
