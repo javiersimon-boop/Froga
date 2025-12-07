@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Noticias | San Vicente de Paúl Irun</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: { 'sv-primary': '#006D7B', 'sv-accent-1': '#5FB3C5', 'sv-accent-2': '#95C11F', 'sv-accent-3': '#FDC300', 'sv-cta': '#F3953F', 'sv-light': '#F9FAFB' },
+                    fontFamily: { sans: ['Montserrat', 'sans-serif'] }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-white text-gray-800 font-sans">
+
+    <!-- NAV -->
+    <nav class="bg-white shadow-md fixed w-full z-50">
+        <div class="max-w-7xl mx-auto px-4 h-20 flex items-center justify-between">
+            <a href="index.html" class="font-bold text-sv-primary text-lg uppercase">San Vicente de Paúl</a>
+            <div class="hidden md:flex space-x-6 text-xs uppercase font-bold text-gray-500">
+                <a href="index.html" class="hover:text-sv-primary">Hasiera / Inicio</a>
+                <a href="#" class="text-sv-primary">Albisteak / Noticias</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <header class="relative bg-sv-primary h-64 flex items-center justify-center pt-20 overflow-hidden">
+        <div class="absolute inset-0 opacity-20"><img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" class="w-full h-full object-cover"></div>
+        <div class="relative z-10 text-center px-4">
+            <h1 class="text-4xl md:text-5xl font-bold text-white mb-2">Gaurkotasuna</h1>
+            <div class="w-16 h-1 bg-sv-accent-2 mx-auto my-3"></div>
+            <p class="text-white text-xl font-medium tracking-wide opacity-90">Actualidad y Noticias</p>
+        </div>
+    </header>
+
+    <!-- MAIN GRID -->
+    <main class="max-w-7xl mx-auto px-4 py-16">
+        
+        <div id="full-news-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="col-span-full text-center py-20">
+                <div class="inline-block animate-spin rounded-full h-8 w-8 border-4 border-sv-primary border-t-transparent"></div>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="bg-white border-t border-gray-100 py-8 text-center text-xs text-gray-500">
+        &copy; 2025 Colegio San Vicente de Paúl Irun.
+    </footer>
+
+    <!-- SCRIPT (Reutilizando lógica) -->
+    <script>
+        const SHEET_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRH7yAF9u3eguKbDSemxaDviakRJMDMGNxTSe6U86ZO8poS6wZAIpN3JJhSvOxTBnyYWeif1ZhY6x33/pub?output=csv'; 
+        const grid = document.getElementById('full-news-grid');
+
+        async function loadAllNews() {
+            try {
+                const response = await fetch(SHEET_URL);
+                if (!response.ok) throw new Error("Error");
+                const data = await response.text();
+                let newsItems = parseCSV(data);
+                
+                grid.innerHTML = '';
+                // Mostrar TODAS las noticias, de reciente a antigua
+                newsItems.reverse().forEach(news => {
+                    grid.insertAdjacentHTML('beforeend', createCardHTML(news));
+                });
+            } catch (error) {
+                grid.innerHTML = '<p class="text-center col-span-full">Cargando datos de ejemplo...</p>';
+                // Fallback para demo
+                setTimeout(() => {
+                   grid.innerHTML = '';
+                   [1,2,3,4,5,6].forEach(i => grid.insertAdjacentHTML('beforeend', createCardHTML({
+                       mes: 'URR', dia: '28', titulo_es: 'Noticia de Ejemplo ' + i, resumen_es: 'Descripción breve de la noticia...', enlace: '#'
+                   }))); 
+                }, 1000);
+            }
+        }
+
+        function parseCSV(str) {
+            const rows = str.trim().split('\n');
+            return rows.slice(1).map(row => {
+                const cols = row.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
+                const cleanCols = cols.map(col => col.replace(/^"|"$/g, '').trim());
+                if (cleanCols.length < 5) return null;
+                return {
+                    mes: cleanCols[0],
+                    dia: cleanCols[1],
+                    titulo_eu: cleanCols[2],
+                    resumen_eu: cleanCols[3],
+                    titulo_es: cleanCols[4],
+                    resumen_es: cleanCols[5],
+                    enlace: cleanCols[6] || '#'
+                };
+            }).filter(n => n);
+        }
+
+        function createCardHTML(news) {
+            // Lógica para mostrar botón si hay enlace
+            const hasLink = news.enlace && news.enlace !== '#' && news.enlace.trim() !== '';
+            const linkButton = hasLink 
+                ? `<a href="${news.enlace}" target="_blank" class="block w-full text-center bg-sv-light text-sv-primary font-bold py-2 rounded hover:bg-sv-primary hover:text-white transition text-sm mb-2">Ver Publicación / Ikusi</a>` 
+                : '';
+
+            return `
+            <div class="bg-white rounded-xl shadow-md border border-gray-100 overflow-hidden hover:shadow-xl transition-all duration-300 flex flex-col">
+                <div class="bg-sv-primary p-4 text-white flex justify-between items-center">
+                    <span class="font-bold text-lg">${news.dia}</span>
+                    <span class="text-xs font-medium bg-white/20 px-2 py-1 rounded">${news.mes}</span>
+                </div>
+                <div class="p-6 flex-grow">
+                    <h3 class="font-bold text-gray-900 text-lg mb-2">${news.titulo_es}</h3>
+                    <p class="text-gray-600 text-sm mb-4 line-clamp-3">${news.resumen_es}</p>
+                    <div class="border-t border-gray-100 my-4"></div>
+                    <h4 class="font-bold text-gray-800 text-sm mb-1">${news.titulo_eu || ''}</h4>
+                </div>
+                <div class="p-6 pt-0 mt-auto">
+                    ${linkButton}
+                    <button onclick="shareItem('${news.titulo_es}', '${news.enlace}')" class="block w-full text-center border border-gray-200 text-gray-500 font-bold py-2 rounded hover:bg-gray-50 transition text-sm flex items-center justify-center gap-2">
+                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"/></svg>
+                         Elkarbanatu / Compartir
+                    </button>
+                </div>
+            </div>`;
+        }
+
+        window.shareItem = async (title, url) => {
+             const shareData = {
+                title: `San Vicente Irun: ${title}`,
+                text: `Noticia: ${title} (@svpaulirun)`,
+                url: url && url !== '#' ? url : window.location.href
+            };
+            if (navigator.share) {
+                try { await navigator.share(shareData); } catch (e) {}
+            } else {
+                alert("Copia este enlace para compartir: " + shareData.url);
+            }
+        }
+
+        loadAllNews();
+    </script>
+</body>
+</html>
