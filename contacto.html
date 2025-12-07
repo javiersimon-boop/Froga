@@ -51,11 +51,14 @@
                     <a href="index.html" class="text-gray-600 hover:text-sv-primary font-medium transition text-xs uppercase tracking-wide text-center">
                         <span class="block font-bold">Hasiera</span><span class="block font-normal text-gray-400">Inicio</span>
                     </a>
+                    <a href="nor-gara.html" class="text-gray-600 hover:text-sv-primary font-medium transition text-xs uppercase tracking-wide text-center">
+                        <span class="block font-bold">Nor gara</span><span class="block font-normal text-gray-400">Quiénes somos</span>
+                    </a>
                     <a href="oferta-educativa.html" class="text-gray-600 hover:text-sv-primary font-medium transition text-xs uppercase tracking-wide text-center">
                         <span class="block font-bold">Etapak</span><span class="block font-normal text-gray-400">Etapas</span>
                     </a>
-                    <a href="prematricula.html" class="text-gray-600 hover:text-sv-primary font-medium transition text-xs uppercase tracking-wide text-center">
-                        <span class="block font-bold">Matrikulazioa</span><span class="block font-normal text-gray-400">Matrícula</span>
+                    <a href="zerbitzuak.html" class="text-gray-600 hover:text-sv-primary font-medium transition text-xs uppercase tracking-wide text-center">
+                        <span class="block font-bold">Zerbitzuak</span><span class="block font-normal text-gray-400">Servicios</span>
                     </a>
                     <a href="#" class="text-sv-primary font-bold transition text-xs uppercase tracking-wide text-center">
                         <span class="block font-bold">Kontaktua</span><span class="block font-normal text-sv-primary/70">Contacto</span>
@@ -123,15 +126,21 @@
                     </div>
                 </div>
 
-                <!-- Mapa Placeholder (Google Maps) -->
-                <div class="w-full h-64 bg-gray-200 rounded-xl overflow-hidden mt-8 shadow-inner flex items-center justify-center text-gray-400">
-                    <!-- Aquí iría el iframe de Google Maps -->
-                    <span class="font-bold">Google Maps Embed</span>
+                <!-- Mapa Google Maps (Insertado) -->
+                <div class="w-full h-80 bg-gray-100 rounded-xl overflow-hidden mt-8 shadow-md border border-gray-200">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2901.6265110721865!2d-1.8029872235639375!3d43.34300397243778!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd51085a67325847%3A0x341026f570bdd5a5!2sSan%20Vicente%20de%20Pa%C3%BAl%20Ikastetxea!5e0!3m2!1ses!2ses!4v1765101906419!5m2!1ses!2ses" 
+                        class="w-full h-full" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
                 </div>
             </div>
 
             <!-- FORMULARIO (Derecha) -->
-            <div class="bg-gray-50 p-8 md:p-10 rounded-2xl shadow-sm border border-gray-100">
+            <div class="bg-gray-50 p-8 md:p-10 rounded-2xl shadow-sm border border-gray-100 h-fit">
                 <h3 class="text-xl font-bold text-sv-primary mb-6">Jarri harremanetan / Contacta</h3>
                 <form class="space-y-5">
                     <div>
@@ -158,7 +167,7 @@
                         <label class="block text-sm font-medium text-gray-700 mb-1">Mezua / Mensaje</label>
                         <textarea rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sv-primary focus:border-transparent outline-none transition"></textarea>
                     </div>
-                    <button type="submit" class="w-full bg-sv-cta text-white font-bold py-3 rounded-lg hover:bg-opacity-90 transition shadow-md">
+                    <button type="submit" class="w-full bg-sv-cta text-white font-bold py-3 rounded-lg hover:bg-opacity-90 transition shadow-md transform hover:-translate-y-0.5">
                         Bidali / Enviar
                     </button>
                 </form>
@@ -170,6 +179,10 @@
 
     <!-- FOOTER -->
     <footer class="bg-white border-t border-gray-100 py-8">
+        <div class="flex justify-center space-x-6 mb-6">
+             <a href="#" class="w-10 h-10 bg-sv-primary rounded-full flex items-center justify-center text-white hover:bg-sv-accent-1 transition"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
+             <a href="#" class="w-10 h-10 bg-sv-primary rounded-full flex items-center justify-center text-white hover:bg-sv-accent-1 transition"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+        </div>
         <div class="border-t border-gray-100 pt-6 text-center text-xs text-gray-500 mt-8">
             &copy; 2025 Colegio San Vicente de Paúl Irun. Todos los derechos reservados.
         </div>
