@@ -56,11 +56,24 @@
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
         .fade-in { animation: fadeIn 0.5s ease-in; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* Estilos del Modal */
+        dialog::backdrop {
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(4px);
+        }
+        dialog[open] {
+            animation: zoomIn 0.3s ease-out;
+        }
+        @keyframes zoomIn {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
     </style>
 </head>
 <body class="bg-white text-gray-800">
 
-    <!-- 1. BARRA DE NAVEGACIÓN (Integrada directamente) -->
+    <!-- 1. BARRA DE NAVEGACIÓN -->
     <nav class="bg-white shadow-md fixed w-full z-50 transition-all duration-300">
         <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-20">
@@ -208,7 +221,7 @@
                 </div>
 
                 <div class="mt-12 text-center lg:text-left">
-                    <a href="https://sites.google.com/sanvicenteirun.com/web/noticias" class="inline-block bg-sv-primary text-white font-bold py-3 px-8 rounded-lg shadow-md hover:bg-sv-dark-teal hover:shadow-lg transition-all">
+                    <a href="noticias.html" class="inline-block bg-sv-primary text-white font-bold py-3 px-8 rounded-lg shadow-md hover:bg-sv-dark-teal hover:shadow-lg transition-all">
                         Albiste guztiak ikusi <span class="opacity-70 font-normal">| Ver todas</span>
                     </a>
                 </div>
@@ -329,7 +342,7 @@
 
     </main>
 
-    <!-- 7. FOOTER INTEGRADO (Con Bluesky corregido) -->
+    <!-- FOOTER INTEGRADO -->
     <footer class="bg-white border-t border-gray-100 py-8">
         <div class="flex justify-center space-x-6">
             <a href="#" class="w-10 h-10 bg-sv-primary rounded-full flex items-center justify-center text-white hover:bg-sv-accent-1 transition"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
@@ -337,11 +350,10 @@
             <a href="#" class="w-10 h-10 bg-sv-primary rounded-full flex items-center justify-center text-white hover:bg-sv-accent-1 transition"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
             <a href="#" class="w-10 h-10 bg-sv-primary rounded-full flex items-center justify-center text-white hover:bg-sv-accent-1 transition"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M21.582,6.186c-0.23-0.86-0.908-1.538-1.768-1.768C18.254,4,12,4,12,4S5.746,4,4.186,4.418 c-0.86,0.23-1.538,0.908-1.768,1.768C2,7.746,2,12,2,12s0,4.254,0.418,5.814c0.23,0.86,0.908,1.538,1.768,1.768 C5.746,20,12,20,12,20s6.254,0,7.814-0.418c0.861-0.23,1.538-0.908,1.768-1.768C22,16.254,22,12,22,12S22,7.746,21.582,6.186z M10,15.464V8.536L16,12L10,15.464z"/></svg></a>
             <a href="#" class="w-10 h-10 bg-sv-primary rounded-full flex items-center justify-center text-white hover:bg-sv-accent-1 transition"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a>
-            <!-- Icono Bluesky Corregido -->
+            <!-- Icono Bluesky -->
             <a href="#" class="w-10 h-10 bg-sv-primary rounded-full flex items-center justify-center text-white hover:bg-sv-accent-1 transition">
                 <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 512 512">
-                   <!-- Path simplificado de la mariposa -->
-                   <path d="M111.8 62.2C170.2 105.9 226.3 177 256 211.1c29.7-34.1 85.8-105.2 144.2-149 26.3-19.7 51-26.6 69.1-16.1 18.2 10.5 17.5 45.4 6 100.5-22 105.5-103.1 202.9-148 219.7-27.4 10.3-64.6 3-71.3-46.7 0 0-4.3 35.4-32.9 65.6-28.6 30.2-79.6 42.6-118 42.6-23.7 0-41.9-4.8-49.3-8.8-13.6-7.4-17.7-24.5-8.8-37.4 10-14.4 29.5-24.7 58.8-24.7 29.4 0 54.4 11.2 78.4 4.5 16.6-4.6 30.2-16 35.8-30.8 5.6-14.8 2-31.5-9.3-43.6-32.6-35.1-99.3-87.1-125.7-111.4-40.4-37.2-46.3-86.4-14.9-106.8 19-12.4 45.6-14.3 80-6.6zm288.4 0c-58.4 43.7-114.5 114.8-144.2 148.9-29.7-34.1-85.8-105.2-144.2-148.9-26.3-19.7-51-26.6-69.1-16.1-18.2 10.5-17.5 45.4-6 100.5 22 105.5 103.1 202.9 148 219.7 27.4 10.3 64.6 3 71.3-46.7 0 0 4.3 35.4 32.9 65.6 28.6 30.2 79.6 42.6 118 42.6 23.7 0 41.9-4.8 49.3-8.8 13.6-7.4 17.7-24.5 8.8-37.4-10-14.4-29.5-24.7-58.8-24.7-29.4 0-54.4 11.2-78.4 4.5-16.6-4.6-30.2-16-35.8-30.8-5.6-14.8-2-31.5 9.3-43.6 32.6-35.1 99.3-87.1 125.7-111.4 40.4-37.2 46.3-86.4 14.9-106.8-19-12.4-45.6-14.3-80-6.6z"/>
+                   <path d="M111.8 62.2C170.2 105.9 226.3 177 256 211.1c29.7-34.1 85.8-105.2 144.2-149 26.3-19.7 51-26.6 69.1-16.1 18.2 10.5 17.5 45.4 6 100.5-22 105.5-103.1 202.9-148 219.7-27.4 10.3-64.6 3-71.3-46.7 0 0-4.3 35.4-32.9 65.6-28.6 30.2-79.6 42.6-118 42.6-23.7 0-41.9-4.8-49.3-8.8-13.6-7.4-17.7-24.5-8.8-37.4 10-14.4 29.5-24.7 58.8-24.7 29.4 0 54.4 11.2 78.4 4.5 16.6-4.6 30.2-16 35.8-30.8 5.6-14.8 2-31.5 9.3-43.6 32.6-35.1 99.3-87.1 125.7-111.4 40.4-37.2-46.3-86.4-14.9-106.8 19-12.4 45.6-14.3 80-6.6zm288.4 0c-58.4 43.7-114.5 114.8-144.2 148.9-29.7-34.1-85.8-105.2-144.2-148.9-26.3-19.7-51-26.6-69.1-16.1-18.2 10.5-17.5 45.4-6 100.5 22 105.5 103.1 202.9 148 219.7 27.4 10.3 64.6 3 71.3-46.7 0 0 4.3 35.4 32.9 65.6 28.6 30.2 79.6 42.6 118 42.6 23.7 0 41.9-4.8 49.3-8.8 13.6-7.4 17.7-24.5 8.8-37.4-10-14.4-29.5-24.7-58.8-24.7-29.4 0-54.4 11.2-78.4 4.5-16.6-4.6-30.2-16-35.8-30.8-5.6-14.8-2-31.5 9.3-43.6 32.6-35.1 99.3-87.1 125.7-111.4 40.4-37.2 46.3-86.4 14.9-106.8-19-12.4-45.6-14.3-80-6.6z"/>
                 </svg>
             </a>
         </div>
@@ -350,46 +362,96 @@
         </div>
     </footer>
 
-    <!-- SCRIPT DE NOTICIAS INTEGRADO (MODO SEGURO) -->
+    <!-- MODAL DE NOTICIAS -->
+    <dialog id="news-modal" class="rounded-xl shadow-2xl p-0 w-full max-w-2xl bg-white backdrop:bg-gray-900/50 open:animate-zoomIn">
+        <!-- Cabecera Modal -->
+        <div class="bg-sv-primary p-6 flex justify-between items-start text-white">
+            <div id="modal-date" class="text-sm font-bold uppercase tracking-wider opacity-90"></div>
+            <button onclick="closeModal()" class="text-white hover:text-sv-accent-3 transition">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+            </button>
+        </div>
+        
+        <!-- Contenido Modal -->
+        <div class="p-8 space-y-6 overflow-y-auto max-h-[70vh]">
+            
+            <!-- Euskera -->
+            <div class="pb-6 border-b border-gray-100">
+                <span class="text-xs font-bold text-sv-accent-2 uppercase tracking-wide mb-2 block">Euskara</span>
+                <h2 id="modal-title-eu" class="text-2xl font-bold text-gray-900 mb-3"></h2>
+                <div id="modal-body-eu" class="text-gray-600 leading-relaxed text-sm"></div>
+            </div>
+
+            <!-- Castellano -->
+            <div class="pt-2">
+                <span class="text-xs font-bold text-sv-accent-1 uppercase tracking-wide mb-2 block">Castellano</span>
+                <h2 id="modal-title-es" class="text-2xl font-bold text-gray-900 mb-3"></h2>
+                <div id="modal-body-es" class="text-gray-600 leading-relaxed text-sm"></div>
+            </div>
+
+            <!-- Botones de Acción -->
+            <div class="flex flex-col sm:flex-row gap-4 pt-4 mt-4 border-t border-gray-100">
+                <!-- Botón Ver Enlace (Dinámico) -->
+                <a id="modal-link-btn" href="#" target="_blank" class="hidden flex-1 text-center bg-sv-primary text-white font-bold py-3 px-6 rounded-lg hover:bg-opacity-90 transition shadow-sm items-center justify-center gap-2">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                    Ikusi / Ver
+                </a>
+                
+                <!-- Botón Compartir -->
+                <button onclick="shareNews()" class="flex-1 bg-gray-100 text-gray-700 font-bold py-3 px-6 rounded-lg hover:bg-gray-200 transition shadow-sm flex items-center justify-center gap-2">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"/></svg>
+                    Elkarbanatu / Compartir
+                </button>
+            </div>
+        </div>
+    </dialog>
+
+    <!-- SCRIPT -->
     <script>
-        // URL DE TU HOJA DE CÁLCULO (CSV PUBLICADO)
+        // CONFIGURACIÓN
         const SHEET_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRH7yAF9u3eguKbDSemxaDviakRJMDMGNxTSe6U86ZO8poS6wZAIpN3JJhSvOxTBnyYWeif1ZhY6x33/pub?output=csv'; 
         
-        const container = document.getElementById('news-container');
+        // Estado global
+        let allNews = [];
+        let currentNewsIndex = null;
 
+        const container = document.getElementById('news-container');
+        const modal = document.getElementById('news-modal');
+
+        // Carga Inicial
         async function loadNews() {
             try {
-                // Intentamos conectar
                 const response = await fetch(SHEET_URL);
                 if (!response.ok) throw new Error("Error de conexión");
                 const data = await response.text();
-                const newsItems = parseCSV(data);
+                allNews = parseCSV(data);
                 
-                container.innerHTML = ''; // Limpiar loader
+                container.innerHTML = ''; 
 
-                if (newsItems.length === 0) {
-                    showFallbackNews(); // Si está vacía, mostramos ejemplo
+                if (allNews.length === 0) {
+                    useFallbackData();
                     return;
                 }
 
-                // MODIFICACIÓN: Invertimos el array (.reverse) antes de cortar (.slice)
-                // Esto hace que se muestren las últimas filas del Excel primero (Noticias más recientes)
-                newsItems.reverse().slice(0, 3).forEach(news => {
-                    const html = createNewsHTML(news);
+                // Renderizar las 3 MÁS RECIENTES (Últimas del Excel = Primeras en web)
+                const latestNews = [...allNews].reverse().slice(0, 3);
+                
+                // IMPORTANTE: Mapeamos el índice original correcto para el modal
+                latestNews.forEach((news, displayIndex) => {
+                    // El índice real en el array invertido es displayIndex
+                    const html = createNewsHTML(news, displayIndex); 
                     container.insertAdjacentHTML('beforeend', html);
                 });
 
             } catch (error) {
-                console.warn("Fallo al cargar noticias externas. Usando datos de ejemplo.", error);
-                // SI FALLA (CORS, URL, ETC), MOSTRAMOS LAS DE EJEMPLO
-                container.innerHTML = '';
-                showFallbackNews();
+                console.warn("Fallo al cargar noticias. Usando modo seguro.", error);
+                useFallbackData();
             }
         }
 
-        // Noticias de reserva para que nunca se vea vacío
-        function showFallbackNews() {
-            const fallbackData = [
+        function useFallbackData() {
+            // Datos de ejemplo
+            allNews = [
                 {
                     mes: 'URR / OCT', dia: '28',
                     titulo_eu: 'Berrikuntzaren Egunaren Ospakizuna', resumen_eu: 'Bigarren Hezkuntzako gure ikasleek robotika eta programazio proiektuak aurkeztu zituzten...',
@@ -410,17 +472,103 @@
                 }
             ];
             
-            fallbackData.forEach(news => {
-                container.insertAdjacentHTML('beforeend', createNewsHTML(news));
+            container.innerHTML = '';
+            allNews.forEach((news, index) => {
+                container.insertAdjacentHTML('beforeend', createNewsHTML(news, index));
             });
         }
 
+        // Lógica del Modal
+        window.openModal = function(index) {
+            // Si estamos usando datos reales, debemos acceder al array invertido que se mostró
+            // Simplificación: usaremos el índice visual pasado desde el HTML
+            
+            // Para asegurar que cogemos la noticia correcta del array visual (que son las 3 primeras del reverse)
+            // Si usamos fallback, allNews ya tiene solo 3. Si usamos fetch, allNews tiene todas.
+            // PERO en pantalla solo mostramos las 3 últimas del CSV.
+            
+            // Re-calculamos las 3 que se muestran para coger la correcta
+            let newsToShow;
+            if(allNews.length > 3 && SHEET_URL) {
+                 const reversed = [...allNews].reverse();
+                 newsToShow = reversed[index];
+            } else {
+                 newsToShow = allNews[index];
+            }
+
+            if (!newsToShow) return;
+            currentNewsIndex = index; // Guardar referencia para compartir
+
+            // Rellenar datos
+            document.getElementById('modal-date').textContent = `${newsToShow.mes} - ${newsToShow.dia}`;
+            
+            document.getElementById('modal-title-eu').textContent = newsToShow.titulo_eu;
+            document.getElementById('modal-body-eu').textContent = newsToShow.resumen_eu; // Aquí iría contenido largo si hubiera
+            
+            document.getElementById('modal-title-es').textContent = newsToShow.titulo_es;
+            document.getElementById('modal-body-es').textContent = newsToShow.resumen_es;
+
+            // Botón de enlace (si existe)
+            const linkBtn = document.getElementById('modal-link-btn');
+            if (newsToShow.enlace && newsToShow.enlace !== '#' && newsToShow.enlace.trim() !== '') {
+                linkBtn.href = newsToShow.enlace;
+                linkBtn.classList.remove('hidden');
+                linkBtn.classList.add('flex');
+            } else {
+                linkBtn.classList.add('hidden');
+                linkBtn.classList.remove('flex');
+            }
+
+            modal.showModal();
+            // Bloquear scroll fondo
+            document.body.style.overflow = 'hidden';
+        }
+
+        window.closeModal = function() {
+            modal.close();
+            document.body.style.overflow = '';
+        }
+
+        // Cerrar al hacer clic fuera
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeModal();
+        });
+
+        // Lógica de Compartir
+        window.shareNews = async function() {
+            let news;
+            // Misma lógica de recuperación que openModal
+            if(allNews.length > 3 && SHEET_URL) {
+                 const reversed = [...allNews].reverse();
+                 news = reversed[currentNewsIndex];
+            } else {
+                 news = allNews[currentNewsIndex];
+            }
+
+            const shareData = {
+                title: `San Vicente Irun: ${news.titulo_es}`,
+                text: `Mira esta noticia de San Vicente de Paúl Irun (@svpaulirun): ${news.titulo_es} / ${news.titulo_eu}`,
+                url: news.enlace && news.enlace !== '#' ? news.enlace : window.location.href
+            };
+
+            // Intentar usar API nativa del móvil
+            if (navigator.share) {
+                try {
+                    await navigator.share(shareData);
+                } catch (err) {
+                    console.log('Error al compartir', err);
+                }
+            } else {
+                // Fallback para escritorio: Abrir Twitter
+                const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareData.text)}&url=${encodeURIComponent(shareData.url)}`;
+                window.open(twitterUrl, '_blank');
+            }
+        }
+
+        // Parser CSV
         function parseCSV(str) {
             const rows = str.trim().split('\n');
-            // Saltamos cabecera
             return rows.slice(1).map(row => {
-                // Split simple por comas (ojo si hay comas en el texto)
-                // Para una web real se recomienda un parser más robusto o evitar comas en el Excel
                 const cols = row.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
                 const cleanCols = cols.map(col => col.replace(/^"|"$/g, '').trim());
                 if (cleanCols.length < 5) return null;
@@ -436,7 +584,8 @@
             }).filter(n => n);
         }
 
-        function createNewsHTML(news) {
+        // Generador HTML (Abre Modal en vez de link)
+        function createNewsHTML(news, index) {
             return `
             <div class="flex flex-col md:flex-row gap-6 border-b border-gray-100 pb-8 last:border-0 fade-in">
                 <div class="flex-shrink-0 text-center md:text-left pt-2 md:w-24">
@@ -446,24 +595,23 @@
                 <div class="flex-grow space-y-4">
                     <div>
                         <h3 class="text-xl font-bold text-sv-primary mb-1">${news.titulo_eu}</h3>
-                        <p class="text-gray-600 text-sm mb-2 leading-relaxed">${news.resumen_eu}</p>
-                        <a href="${news.enlace}" target="_top" class="text-xs font-bold text-sv-accent-2 hover:text-sv-primary uppercase tracking-wide transition-colors">
+                        <p class="text-gray-600 text-sm mb-2 leading-relaxed line-clamp-2">${news.resumen_eu}</p>
+                        <button onclick="openModal(${index})" class="text-xs font-bold text-sv-accent-2 hover:text-sv-primary uppercase tracking-wide transition-colors">
                             Gehiago irakurri &rarr;
-                        </a>
+                        </button>
                     </div>
                     <div class="border-t border-dashed border-gray-200 w-full"></div>
                     <div>
                         <h3 class="text-xl font-bold text-sv-primary mb-1">${news.titulo_es}</h3>
-                        <p class="text-gray-600 text-sm mb-2 leading-relaxed">${news.resumen_es}</p>
-                        <a href="${news.enlace}" target="_top" class="text-xs font-bold text-sv-accent-1 hover:text-sv-primary uppercase tracking-wide transition-colors">
+                        <p class="text-gray-600 text-sm mb-2 leading-relaxed line-clamp-2">${news.resumen_es}</p>
+                        <button onclick="openModal(${index})" class="text-xs font-bold text-sv-accent-1 hover:text-sv-primary uppercase tracking-wide transition-colors">
                             Leer más &rarr;
-                        </a>
+                        </button>
                     </div>
                 </div>
             </div>`;
         }
 
-        // Iniciar
         loadNews();
     </script>
 
