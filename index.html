@@ -36,6 +36,14 @@
     </script>
     <style>
         /* ESTILOS EXTRA */
+        .hero-clip {
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+        }
+        @media (max-width: 768px) {
+            .hero-clip {
+                clip-path: polygon(0 0, 100% 0, 100% 95%, 0 100%); /* Corte más suave en móvil */
+            }
+        }
         .loader {
             border: 3px solid #f3f3f3;
             border-top: 3px solid #006D7B;
@@ -83,7 +91,8 @@
                         <span class="text-xs font-semibold text-gray-400 tracking-widest uppercase">Irun</span>
                     </div>
                 </a>
-                <!-- Menú Escritorio -->
+                
+                <!-- Menú Escritorio (Oculto en móvil 'hidden', visible en medio 'md:flex') -->
                 <div class="hidden md:flex items-center space-x-6">
                     <a href="index.html" class="text-sv-primary font-bold transition text-xs uppercase tracking-wide text-center">
                         <span class="block font-bold">Hasiera</span>
@@ -106,12 +115,34 @@
                         <span class="block font-normal opacity-80">Solicitar visita</span>
                     </a>
                 </div>
+
+                <!-- Botón Menú Móvil (Solo visible en móvil 'md:hidden') -->
+                <div class="flex md:hidden items-center">
+                    <button id="mobile-menu-btn" class="text-sv-primary hover:text-sv-accent-1 focus:outline-none p-2">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Menú Móvil Desplegable (Oculto por defecto) -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 absolute w-full left-0 top-20 shadow-xl z-40">
+            <div class="px-4 pt-4 pb-6 space-y-3">
+                <a href="index.html" class="block px-3 py-3 rounded-lg hover:bg-sv-light text-sv-primary font-bold">Hasiera / Inicio</a>
+                <a href="nor-gara.html" class="block px-3 py-3 rounded-lg hover:bg-sv-light text-gray-600 font-medium">Nor gara / Quiénes somos</a>
+                <a href="oferta-educativa.html" class="block px-3 py-3 rounded-lg hover:bg-sv-light text-gray-600 font-medium">Etapak / Etapas</a>
+                <a href="zerbitzuak.html" class="block px-3 py-3 rounded-lg hover:bg-sv-light text-gray-600 font-medium">Zerbitzuak / Servicios</a>
+                <a href="contacto.html" class="block w-full text-center mt-4 bg-sv-primary text-white px-4 py-3 rounded-lg font-bold shadow-md">
+                    Bisita eskatu / Solicitar visita
+                </a>
             </div>
         </div>
     </nav>
 
     <!-- 2. NUEVO HERO (Canva Embed con Enlace) -->
-    <div class="w-full bg-white pt-24 pb-8">
+    <div class="w-full bg-white pt-24 pb-4">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div style="position: relative; width: 100%; height: 0; padding-top: 56.2225%;
                 padding-bottom: 0; box-shadow: 0 4px 20px 0 rgba(0,0,0,0.1); overflow: hidden;
@@ -123,22 +154,22 @@
                 </iframe>
 
                 <!-- CAPA TRANSPARENTE DE ENLACE -->
-                <!-- Esto cubre el iframe y captura el clic -->
                 <a href="https://calendar.app.google/NmxmP3qnKE5kxFbn7" target="_blank" 
                    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 10; cursor: pointer;"
                    aria-label="Pedir cita en el calendario">
                 </a>
-
             </div>
         </div>
     </div>
 
     <!-- CONTENEDOR PRINCIPAL -->
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
         
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+        <!-- GRID RESPONSIVO: 1 columna en móvil, 12 en escritorio -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12">
             
             <!-- 3. COLUMNA IZQUIERDA (Tarjetas) -->
+            <!-- Orden en móvil: Se mostrará PRIMERO (por defecto) o DESPUÉS de las noticias si quisiéramos cambiar 'order' -->
             <div class="lg:col-span-4 space-y-6">
                 <!-- Tarjeta 1: Proyecto -->
                 <a href="oferta-educativa.html" class="block bg-white rounded-xl shadow-md border border-gray-100 p-6 hover:shadow-lg transition-all group">
@@ -194,19 +225,20 @@
 
             <!-- 4. COLUMNA DERECHA (Noticias Dinámicas) -->
             <div class="lg:col-span-8">
-                <div class="border-b-2 border-sv-accent-1 pb-4 mb-8 flex justify-between items-end">
+                <div class="border-b-2 border-sv-accent-1 pb-4 mb-8 flex flex-col md:flex-row justify-between items-start md:items-end gap-2">
                     <div>
                         <h2 class="text-3xl font-bold text-sv-primary">Azken albisteak</h2>
                         <span class="text-xl font-medium text-gray-400">Últimas noticias</span>
                     </div>
                 </div>
 
+                <!-- CONTENEDOR DE NOTICIAS -->
                 <div id="news-container" class="space-y-10 min-h-[300px]">
                     <div class="loader"></div> <!-- Spinner de carga -->
                 </div>
 
                 <div class="mt-12 text-center lg:text-left">
-                    <a href="noticias.html" class="inline-block bg-sv-primary text-white font-bold py-3 px-8 rounded-lg shadow-md hover:bg-sv-dark-teal hover:shadow-lg transition-all">
+                    <a href="noticias.html" class="inline-block bg-sv-primary text-white font-bold py-3 px-8 rounded-lg shadow-md hover:bg-sv-dark-teal hover:shadow-lg transition-all w-full md:w-auto">
                         Albiste guztiak ikusi <span class="opacity-70 font-normal">| Ver todas</span>
                     </a>
                 </div>
@@ -340,7 +372,7 @@
             <a href="#" class="w-10 h-10 bg-sv-primary rounded-full flex items-center justify-center text-white hover:bg-sv-accent-1 transition"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M21.582,6.186c-0.23-0.86-0.908-1.538-1.768-1.768C18.254,4,12,4,12,4S5.746,4,4.186,4.418 c-0.86,0.23-1.538,0.908-1.768,1.768C2,7.746,2,12,2,12s0,4.254,0.418,5.814c0.23,0.86,0.908,1.538,1.768,1.768 C5.746,20,12,20,12,20s6.254,0,7.814-0.418c0.861-0.23,1.538-0.908,1.768-1.768C22,16.254,22,12,22,12S22,7.746,21.582,6.186z M10,15.464V8.536L16,12L10,15.464z"/></svg></a>
             <!-- LinkedIn -->
             <a href="#" class="w-10 h-10 bg-sv-primary rounded-full flex items-center justify-center text-white hover:bg-sv-accent-1 transition"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a>
-            <!-- Bluesky (Mariposa Oficial) -->
+            <!-- Bluesky -->
             <a href="#" class="w-10 h-10 bg-sv-primary rounded-full flex items-center justify-center text-white hover:bg-sv-accent-1 transition">
                 <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 512 512">
                    <path d="M111.8 62.2C170.2 105.9 226.3 177 256 211.1c29.7-34.1 85.8-105.2 144.2-149 26.3-19.7 51-26.6 69.1-16.1 18.2 10.5 17.5 45.4 6 100.5 22 105.5 103.1 202.9 148 219.7 27.4 10.3 64.6 3 71.3-46.7 0 0 4.3 35.4 32.9 65.6 28.6 30.2 79.6 42.6 118 42.6 23.7 0 41.9-4.8 49.3-8.8 13.6-7.4 17.7-24.5 8.8-37.4-10-14.4-29.5-24.7-58.8-24.7-29.4 0-54.4 11.2-78.4 4.5-16.6-4.6-30.2-16-35.8-30.8-5.6-14.8-2-31.5 9.3-43.6 32.6-35.1 99.3-87.1 125.7-111.4 40.4-37.2 46.3-86.4 14.9-106.8-19-12.4-45.6-14.3-80-6.6zm288.4 0c-58.4 43.7-114.5 114.8-144.2 148.9-29.7-34.1-85.8-105.2-144.2-148.9-26.3-19.7-51-26.6-69.1-16.1-18.2 10.5-17.5 45.4-6 100.5 22 105.5 103.1 202.9 148 219.7 27.4 10.3 64.6 3 71.3-46.7 0 0 4.3 35.4 32.9 65.6 28.6 30.2 79.6 42.6 118 42.6 23.7 0 41.9-4.8 49.3-8.8 13.6-7.4 17.7-24.5 8.8-37.4-10-14.4-29.5-24.7-58.8-24.7-29.4 0-54.4 11.2-78.4 4.5-16.6-4.6-30.2-16-35.8-30.8-5.6-14.8-2-31.5 9.3-43.6 32.6-35.1 99.3-87.1 125.7-111.4 40.4-37.2 46.3-86.4 14.9-106.8-19-12.4-45.6-14.3-80-6.6z"/>
@@ -353,54 +385,38 @@
     </footer>
 
     <!-- MODAL DE NOTICIAS -->
-    <dialog id="news-modal" class="rounded-xl shadow-2xl p-0 w-full max-w-2xl bg-white backdrop:bg-gray-900/50 open:animate-zoomIn">
+    <dialog id="news-modal" class="rounded-xl shadow-2xl p-0 w-full max-w-2xl bg-white backdrop:bg-gray-900/50 open:animate-zoomIn z-50">
         <!-- Cabecera Modal -->
         <div class="bg-sv-primary p-6 flex justify-between items-start text-white">
             <div id="modal-date" class="text-sm font-bold uppercase tracking-wider opacity-90"></div>
-            <button onclick="closeModal()" class="text-white hover:text-sv-accent-3 transition">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
-            </button>
+            <button onclick="closeModal()" class="text-white hover:text-sv-accent-3 transition"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg></button>
         </div>
         
         <!-- Contenido Modal -->
         <div class="p-8 space-y-6 overflow-y-auto max-h-[70vh]">
-            
             <!-- IMAGEN DE NOTICIA -->
-            <!-- Ahora visible por defecto, se oculta si no hay URL -->
             <img id="modal-img" class="w-full h-64 object-cover rounded-lg mb-6 hidden" src="" alt="Noticia">
 
-            <!-- Euskera -->
             <div class="pb-6 border-b border-gray-100">
                 <span class="text-xs font-bold text-sv-accent-2 uppercase tracking-wide mb-2 block">Euskara</span>
                 <h2 id="modal-title-eu" class="text-2xl font-bold text-gray-900 mb-3"></h2>
                 <div id="modal-body-eu" class="text-gray-600 leading-relaxed text-sm"></div>
             </div>
 
-            <!-- Castellano -->
             <div class="pt-2">
                 <span class="text-xs font-bold text-sv-accent-1 uppercase tracking-wide mb-2 block">Castellano</span>
                 <h2 id="modal-title-es" class="text-2xl font-bold text-gray-900 mb-3"></h2>
                 <div id="modal-body-es" class="text-gray-600 leading-relaxed text-sm"></div>
             </div>
 
-            <!-- Botones de Acción -->
             <div class="flex flex-col sm:flex-row gap-4 pt-4 mt-4 border-t border-gray-100">
-                <!-- Botón Ver Enlace (Dinámico) -->
-                <a id="modal-link-btn" href="#" target="_blank" class="hidden flex-1 text-center bg-sv-primary text-white font-bold py-3 px-6 rounded-lg hover:bg-opacity-90 transition shadow-sm items-center justify-center gap-2">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
-                    Ikusi / Ver
-                </a>
-                
-                <!-- Botón Compartir -->
-                <button onclick="shareNews()" class="flex-1 bg-gray-100 text-gray-700 font-bold py-3 px-6 rounded-lg hover:bg-gray-200 transition shadow-sm flex items-center justify-center gap-2">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"/></svg>
-                    Elkarbanatu / Compartir
-                </button>
+                <a id="modal-link-btn" href="#" target="_blank" class="hidden flex-1 text-center bg-sv-primary text-white font-bold py-3 px-6 rounded-lg hover:bg-opacity-90 transition shadow-sm items-center justify-center gap-2"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>Ikusi / Ver</a>
+                <button onclick="shareNews()" class="flex-1 bg-gray-100 text-gray-700 font-bold py-3 px-6 rounded-lg hover:bg-gray-200 transition shadow-sm flex items-center justify-center gap-2"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"/></svg>Elkarbanatu / Compartir</button>
             </div>
         </div>
     </dialog>
 
-    <!-- SCRIPT DE NOTICIAS INTEGRADO (MODO SEGURO) -->
+    <!-- SCRIPT DE NOTICIAS -->
     <script>
         // CONFIGURACIÓN: URL de tu Hoja de Cálculo
         const SHEET_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRH7yAF9u3eguKbDSemxaDviakRJMDMGNxTSe6U86ZO8poS6wZAIpN3JJhSvOxTBnyYWeif1ZhY6x33/pub?output=csv'; 
@@ -409,6 +425,13 @@
         let currentNewsIndex = null;
         const container = document.getElementById('news-container');
         const modal = document.getElementById('news-modal');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+
+        // Menú Móvil
+        mobileBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
 
         // Carga Inicial
         async function loadNews() {
@@ -422,7 +445,6 @@
                 container.innerHTML = ''; // Limpiar loader
 
                 if (allNews.length === 0) {
-                    // Si la hoja está vacía pero conecta, mostramos fallback por si acaso
                     showFallbackNews();
                     return;
                 }
@@ -497,7 +519,7 @@
             document.getElementById('modal-title-es').textContent = newsToShow.titulo_es;
             document.getElementById('modal-body-es').textContent = newsToShow.resumen_es;
 
-            // IMAGEN: Mostrar u ocultar según si existe URL
+            // IMAGEN
             const imgEl = document.getElementById('modal-img');
             if (newsToShow.imagen && newsToShow.imagen.trim() !== '') {
                 imgEl.src = newsToShow.imagen;
@@ -557,7 +579,7 @@
             }
         }
 
-        // Parser CSV (Incluye columna Imagen)
+        // Parser CSV
         function parseCSV(str) {
             const rows = str.trim().split('\n');
             return rows.slice(1).map(row => {
