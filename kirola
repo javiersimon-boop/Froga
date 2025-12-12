@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instalazioak | Instalaciones</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: { 'sv-primary': '#006D7B', 'sv-accent-1': '#5FB3C5', 'sv-accent-2': '#95C11F', 'sv-accent-3': '#FDC300', 'sv-cta': '#F3953F', 'sv-light': '#F9FAFB' },
+                    fontFamily: { sans: ['Montserrat', 'sans-serif'] }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-white text-gray-800 font-sans">
+
+    <nav class="bg-white shadow-md fixed w-full z-50">
+        <div class="max-w-7xl mx-auto px-4 h-20 flex items-center justify-between">
+            <a href="index.html" class="font-bold text-sv-primary text-lg uppercase">San Vicente de Paúl</a>
+            <div class="hidden md:flex space-x-6 text-xs uppercase font-bold text-gray-500">
+                <a href="index.html" class="hover:text-sv-primary">Hasiera / Inicio</a>
+                <a href="#" class="text-sv-primary">Instalazioak / Instalaciones</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="relative bg-sv-primary h-64 flex items-center justify-center pt-20 overflow-hidden">
+        <div class="absolute inset-0 opacity-20">
+            <img src="https://images.unsplash.com/photo-1562774053-701939374585?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="Fondo Instalaciones" class="w-full h-full object-cover">
+        </div>
+        <div class="relative z-10 text-center px-4">
+            <h1 class="text-4xl md:text-5xl font-bold text-white mb-2">Instalazioak</h1>
+            <div class="w-16 h-1 bg-sv-accent-1 mx-auto my-3"></div>
+            <p class="text-white text-xl font-medium tracking-wide opacity-90">Instalaciones</p>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 py-16">
+        
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Item 1: Aulas -->
+            <div class="group rounded-xl overflow-hidden shadow-lg bg-white border border-gray-100">
+                <div class="h-48 overflow-hidden relative">
+                    <img src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Ikasgelak" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-500">
+                </div>
+                <div class="p-6">
+                    <h3 class="font-bold text-lg text-sv-primary">Ikasgelak / Aulas</h3>
+                    <p class="text-gray-600 text-sm mt-2">Argitsuak eta digitalizatuak. <br> Luminosas y digitalizadas.</p>
+                </div>
+            </div>
+            
+            <!-- Item 2: Biblioteca -->
+            <div class="group rounded-xl overflow-hidden shadow-lg bg-white border border-gray-100">
+                <div class="h-48 overflow-hidden relative">
+                    <img src="https://images.unsplash.com/photo-1521587760476-6c12a4b040da?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Liburutegia" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-500">
+                </div>
+                <div class="p-6">
+                    <h3 class="font-bold text-lg text-sv-primary">Liburutegia / Biblioteca</h3>
+                    <p class="text-gray-600 text-sm mt-2">Ikasteko eta irakurtzeko gunea. <br> Espacio de estudio y lectura.</p>
+                </div>
+            </div>
+            
+            <!-- Item 3: Gimnasio -->
+            <div class="group rounded-xl overflow-hidden shadow-lg bg-white border border-gray-100">
+                <div class="h-48 overflow-hidden relative">
+                    <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Gimnasioa" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-500">
+                </div>
+                <div class="p-6">
+                    <h3 class="font-bold text-lg text-sv-primary">Gimnasioa / Gimnasio</h3>
+                    <p class="text-gray-600 text-sm mt-2">Kiroldegi modernoa. <br> Polideportivo moderno.</p>
+                </div>
+            </div>
+            
+            <!-- Item 4: Laboratorios -->
+            <div class="group rounded-xl overflow-hidden shadow-lg bg-white border border-gray-100">
+                <div class="h-48 overflow-hidden relative">
+                    <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Laborategiak" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-500">
+                </div>
+                <div class="p-6">
+                    <h3 class="font-bold text-lg text-sv-primary">Laborategiak / Laboratorios</h3>
+                    <p class="text-gray-600 text-sm mt-2">Zientzia esperimentuak egiteko. <br> Para experimentos científicos.</p>
+                </div>
+            </div>
+            
+            <!-- Item 5: Comedor -->
+            <div class="group rounded-xl overflow-hidden shadow-lg bg-white border border-gray-100">
+                <div class="h-48 overflow-hidden relative">
+                    <img src="https://images.unsplash.com/photo-1574096079513-d82599602950?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Jangela" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-500">
+                </div>
+                <div class="p-6">
+                    <h3 class="font-bold text-lg text-sv-primary">Jangela / Comedor</h3>
+                    <p class="text-gray-600 text-sm mt-2">Sukalde propioa. <br> Cocina propia.</p>
+                </div>
+            </div>
+            
+            <!-- Item 6: Patio -->
+            <div class="group rounded-xl overflow-hidden shadow-lg bg-white border border-gray-100">
+                <div class="h-48 overflow-hidden relative">
+                    <img src="https://images.unsplash.com/photo-1568595502714-5a8aa68c5fd7?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Patioa" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-500">
+                </div>
+                <div class="p-6">
+                    <h3 class="font-bold text-lg text-sv-primary">Patioa / Patio</h3>
+                    <p class="text-gray-600 text-sm mt-2">Jolastoki estalia eta irekia. <br> Zona de recreo cubierta y abierta.</p>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="bg-white border-t border-gray-100 py-8 text-center text-xs text-gray-500">
+        &copy; 2025 Colegio San Vicente de Paúl Irun.
+    </footer>
+
+</body>
+</html>
